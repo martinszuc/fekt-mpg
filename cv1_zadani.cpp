@@ -56,6 +56,9 @@ int sum(int number_array[10], int arr_size) {
 	// Task 5: "for" cycle through array
 	// You can use indexing using array[index]
 	// TODO: Here starts your code
+	for (i = 0; i < arr_size; i++) {
+		sum += number_array[i];
+	}
 
 
 
