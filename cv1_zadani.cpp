@@ -123,10 +123,11 @@ int main() {
 	*/
 
 	b = 4;
-	int ans = 0;
+	float ans = 0.0;
 	// Task 1 
 	// TODO: Here start your code
 	// Advice: always watch out for the types
+	ans = (float)a / b;
 
 
 	cout << "The division " << a << "/" << b << " should be 0.25 and it is: " <<  ans << "\n\n";
