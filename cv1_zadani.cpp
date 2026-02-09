@@ -156,6 +156,7 @@ int main() {
 
 	// Task 2
 	// TODO: Here start your code
+	*(ptr + 1) = 2;
 
 
 	cout << "The second entry in the array should be 2 and it is: " << num_array[1] << "\n \n";
