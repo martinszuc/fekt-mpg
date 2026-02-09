@@ -29,8 +29,9 @@ input: 2 int; output: 1 int
 
 // Task 4 
 // TODO: Here start your code
-
-              
+int multiply(int a, int b) {
+	return a * b;
+}
 
 
 
@@ -204,7 +205,7 @@ int main() {
 	int c = 0, d = 0;
 	// uncomment this block if you are happy with your multiply function
 	// Task is at the beginning 
-	//c = multiply(a, b); // classic function with int return
+	c = multiply(a, b); // classic function with int return
 	cout << "Product of " << a << " and " << b << " without ptr is " << c << ".\n"; // Print in console
 
 
