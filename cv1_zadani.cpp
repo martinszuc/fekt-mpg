@@ -12,7 +12,7 @@ a multiline comment
 
 // Including libraries into your script
 #include <iostream>
-// #include "mylocalheader.h"		// use "" for local header files, <> for standard libraries
+#include "mylocalheader.h"		// use "" for local header files, <> for standard libraries
 
 
 using namespace std;	// calling just cout, not std::cout => cleaner code
@@ -261,6 +261,13 @@ int main() {
 	*/
 
 	// Task 6 -- write your code here
+	int sum_2d = 0;
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 5; j++) {
+			sum_2d += my_2d_array[i][j];
+		}
+	}
+	cout << "Sum of 2D array is: " << sum_2d << "." << endl;
 
 	return 0;
 }
