@@ -1,0 +1,158 @@
+# C/C++ Compiled Object files
+*.o
+*.obj
+*.lo
+*.slo
+*.a
+*.la
+*.lo
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+*.app
+
+# C/C++ Precompiled Headers
+*.gch
+*.pch
+
+# C/C++ Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# C/C++ Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+# Build directories
+build/
+Build/
+BUILD/
+out/
+bin/
+lib/
+obj/
+
+# IDE - CLion / IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# IDE - Visual Studio Code
+.vscode/
+*.code-workspace
+
+# IDE - Visual Studio
+.vs/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# IDE - Xcode
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+*.xcworkspace/*
+!*.xcworkspace/contents.xcworkspacedata
+*.xcuserdata
+DerivedData/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# IDE - Eclipse
+.project
+.cproject
+.settings/
+.metadata/
+.classpath
+
+# IDE - Code::Blocks
+*.depend
+*.layout
+
+# IDE - CodeLite
+.workspace
+.project
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Temporary files
+*~
+*.swp
+*.swo
+*.bak
+*.tmp
+*.log
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Package files
+*.tar
+*.tar.gz
+*.zip
+*.rar
+
+# Test coverage
+*.gcov
+*.gcda
+*.gcno
+
+# Valgrind
+*.memcheck
+*.massif
+
+# Profiling data
+gmon.out
+perf.data*
