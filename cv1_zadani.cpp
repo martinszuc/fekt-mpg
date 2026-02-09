@@ -181,7 +181,12 @@ int main() {
 	int val = 7;
 	// Task 3
 	// TODO:  Here start your code
-	
+	if (val > 0 && val % 3 == 0) {
+		cout << "The value " << val << " is positive and divisible by 3." << endl;
+	}
+	else {
+		cout << "The value " << val << " is not positive or not divisible by 3." << endl;
+	}
 
 
 
