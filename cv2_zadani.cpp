@@ -18,11 +18,14 @@ void vykresliDomecek()
 	glVertex2i(50, 150);
 	glVertex2i(150, 150);
 	glVertex2i(100, 200);
-    
+
 	// Úkol 1
-	// doplňte kód
-
-
+	// complete house outline with walls and second diagonal
+	glVertex2i(50, 150);  // left side of roof
+	glVertex2i(50, 50);   // left wall
+	glVertex2i(150, 50);  // bottom edge
+	glVertex2i(150, 150); // right wall
+	glVertex2i(50, 50);   // diagonal from top-right to bottom-left (completes X)
 
     glEnd(); // každá primitiva se musí opět ukončit
 }
