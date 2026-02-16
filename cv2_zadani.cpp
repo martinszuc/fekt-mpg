@@ -1,6 +1,6 @@
 ﻿// MPC-MPG Lab 2: OpenGL, uvod do vykreslovani
 #include <iostream>
-#include <GL/glut.h>
+#include <GLUT/glut.h>
 // #include <...\packages\nupengl.core.0.1.0.1\build\native\include\GL\freeglut.h> //  include souboru freeglut pri instalaci NuGet balicku
 
 #define PI 3.14 // protože proč ne...
