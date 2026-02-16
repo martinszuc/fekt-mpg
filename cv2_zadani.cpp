@@ -53,7 +53,10 @@ void vykresliKrivku()
 	// x = 150 + 150t, y = 300t^2, z = 0, -1 ≤ t ≤ 1
 
 	// Úkol 2
-	// draw parametric curve as parabola
+	// draw parametric curve as parabola with dotted line
+	glEnable(GL_LINE_STIPPLE); // enable line stipple for dotted line
+	glLineStipple(1, 0x00FF);  // dotted pattern: 1 = repeat factor, 0x00FF = pattern (8 pixels on, 8 off)
+
 	int steps = 100;
 	glBegin(GL_LINE_STRIP);
 	for (int i = 0; i <= steps; i++)
@@ -65,6 +68,7 @@ void vykresliKrivku()
 	}
 	glEnd();
 
+	glDisable(GL_LINE_STIPPLE); // disable line stipple
 	glDisable(GL_LINE_SMOOTH); // je dobrým zvykem deaktivovat, co jsme předtím aktivovali
 	glDisable(GL_BLEND);
 }
