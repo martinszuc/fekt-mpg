@@ -83,13 +83,13 @@ void vykresliPruhlednost()
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	glColor4f(1.0, 0.0, 0.0, 0.3); // red with 30% alpha
+	glColor4f(1.0, 0.0, 0.0, 0.8); // red with 80% alpha
 	vykresliKruh(numVerticies, sx, sy, r1);
 
-	glColor4f(1.0, 1.0, 1.0, 0.6); // white with 60% alpha
+	glColor4f(1.0, 1.0, 1.0, 1.0); // white fully opaque
 	vykresliKruh(numVerticies, sx, sy, r2);
 
-	glColor4f(0.0, 0.0, 1.0, 0.8); // blue with 80% alpha
+	glColor4f(0.0, 0.0, 1.0, 0.6); // blue with 60% alpha
 	glBegin(GL_TRIANGLES);
 	glVertex2i(sx - r1 - 10, sy);      // left vertex
 	glVertex2i(sx + r1 + 10, sy);      // right vertex
