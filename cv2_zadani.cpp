@@ -53,8 +53,17 @@ void vykresliKrivku()
 	// x = 150 + 150t, y = 300t^2, z = 0, -1 ≤ t ≤ 1
 
 	// Úkol 2
-	// doplňte kód
-
+	// draw parametric curve as parabola
+	int steps = 100;
+	glBegin(GL_LINE_STRIP);
+	for (int i = 0; i <= steps; i++)
+	{
+		float t = -1.0 + (2.0 * i / steps); // t ranges from -1 to 1
+		float x = 150 + 150 * t;
+		float y = 300 * t * t;
+		glVertex3f(x, y, 0.0);
+	}
+	glEnd();
 
 	glDisable(GL_LINE_SMOOTH); // je dobrým zvykem deaktivovat, co jsme předtím aktivovali
 	glDisable(GL_BLEND);
