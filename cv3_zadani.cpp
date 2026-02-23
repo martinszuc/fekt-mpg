@@ -1,5 +1,5 @@
 // MPC-MPG Lab 3: Uvod do vykreslovani, Bezierove krivky
-#include <GL/glut.h>
+#include <GLUT/glut.h>
 #include "simpleMesh.h"
 #include <string>
 #include <cmath>
