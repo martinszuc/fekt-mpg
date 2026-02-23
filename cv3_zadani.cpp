@@ -164,8 +164,16 @@ void vykresliBeziera()
 	Y_2 = ridiciBody[2][1];
 	Y_3 = ridiciBody[3][1];
 
-	// TODO ukol 3
-	// doplnte kod na vykresleni Bezierovy krivky podle parametricke rovnice
+	glBegin(GL_LINE_STRIP);
+	for (float t = 0; t <= 1; t += 0.01)
+	{
+		float t2 = t * t;
+		float t3 = t2 * t;
+		float x = (-t3 + 3 * t2 - 3 * t + 1) * X_0 + (3 * t3 - 6 * t2 + 3 * t) * X_1 + (-3 * t3 + 3 * t2) * X_2 + t3 * X_3;
+		float y = (-t3 + 3 * t2 - 3 * t + 1) * Y_0 + (3 * t3 - 6 * t2 + 3 * t) * Y_1 + (-3 * t3 + 3 * t2) * Y_2 + t3 * Y_3;
+		glVertex2f(x, y);
+	}
+	glEnd();
 
 	glPointSize(10);
 	glColor3f(1, 0, 0);
@@ -174,13 +182,23 @@ void vykresliBeziera()
 	{
 		zapniAA();
 	}
-	// Vykresleni ridicich bodu
-	// doplnte kod
+	glBegin(GL_POINTS);
+	for (int i = 0; i < POCET_RIDICICH_BODU; i++)
+	{
+		glVertex2f(ridiciBody[i][0], ridiciBody[i][1]);
+	}
+	glEnd();
 
-	// Vykresleni ridiciho polygonu
-	// doplnte kod
-
-	// Vypiname aliasing
+	glEnable(GL_LINE_STIPPLE);
+	glLineStipple(1, 0xAAAA);
+	glLineWidth(2);
+	glBegin(GL_LINE_STRIP);
+	for (int i = 0; i < POCET_RIDICICH_BODU; i++)
+	{
+		glVertex2f(ridiciBody[i][0], ridiciBody[i][1]);
+	}
+	glEnd();
+	glDisable(GL_LINE_STIPPLE);
 
 	if (antialiasing)
 	{
