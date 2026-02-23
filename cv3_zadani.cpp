@@ -131,19 +131,17 @@ void vykreslovaniPole()
 
 void bitmapText()
 {
-	// TODO Ukol 4
-	// Vypis souradnic vsech ridicich bodu
+	glColor3f(1, 1, 1);
 	string str;
 	for (int i = 0; i < POCET_RIDICICH_BODU; i++)
 	{
-		// Doplnte kod
-		// Vytvoreni string do promenne str
+		str = "Ridici bod: " + to_string(i) + "  X: " + to_string((int)ridiciBody[i][0]) + "  Y: " + to_string((int)ridiciBody[i][1]);
 
-		// Inicializace pozice
+		glRasterPos2i(ridiciBody[i][0] + 15, ridiciBody[i][1]);
 
-		// Vypsani for cyklem kazdeho pismena
 		for (int j = 0; j < str.length(); j++)
 		{
+			glutBitmapCharacter(GLUT_BITMAP_8_BY_13, str[j]);
 		}
 	}
 }
