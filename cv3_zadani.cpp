@@ -59,15 +59,41 @@ void opakovaniUkol1()
 		zapniAA();
 	}
 
-	// TODO ukol 1
-	// doplnte kod
-	// dva body o souřadnicích (200, 350) a (300, 350), velikost bodů 25, barva modrá
+	glPointSize(25);
+	glColor3f(0, 0, 1);
+	glBegin(GL_POINTS);
+	glVertex2f(200, 350);
+	glVertex2f(300, 350);
+	glEnd();
 
-	// čára šířky 25 bodů barvy zelené, od (150, 300) do (350, 250)
+	glLineWidth(25);
+	glColor3f(0, 1, 0);
+	glBegin(GL_LINES);
+	glVertex2f(150, 300);
+	glVertex2f(350, 250);
+	glEnd();
 
-	// čára šířky 5 bodů barvy žluté, od (50, 250) do (350, 200), pattern 1:1 zapnuté / vypnuté bity (přerušovaná čára)
+	glLineWidth(5);
+	glEnable(GL_LINE_STIPPLE);
+	glLineStipple(1, 0xAAAA);
+	glColor3f(1, 1, 0);
+	glBegin(GL_LINES);
+	glVertex2f(50, 250);
+	glVertex2f(350, 200);
+	glEnd();
+	glDisable(GL_LINE_STIPPLE);
 
-	// dvě čáry šířky 5 bodů, jedna červená (50, 150) – (350, 100), druhá zelená (50, 100) – (350, 150), čáry jsou plné
+	glColor3f(1, 0, 0);
+	glBegin(GL_LINES);
+	glVertex2f(50, 150);
+	glVertex2f(350, 100);
+	glEnd();
+
+	glColor3f(0, 1, 0);
+	glBegin(GL_LINES);
+	glVertex2f(50, 100);
+	glVertex2f(350, 150);
+	glEnd();
 
 	if (antialiasing)
 	{
