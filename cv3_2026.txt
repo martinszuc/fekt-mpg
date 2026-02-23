@@ -1,0 +1,277 @@
+﻿1 / 13 
+CVIČENÍ 3: ZÁKLADY VYKRESLOVÁNÍ VE 2D, BÉZIEROVY KŘIVKY Moderní počítačová grafika
+
+ZÁKLADY VYKRESLOVÁNÍ VE 2D
+BÉZIEROVY KŘIVKY
+
+Kurz: Moderní počítačová grafika
+
+Lektor: Ing. Michal Švento
+
+Vysoké učení technické v Brně Fakulta elektrotechniky a komunikačních technologií
+
+
+
+2 / 13 
+CVIČENÍ 3: ZÁKLADY VYKRESLOVÁNÍ VE 2D, BÉZIEROVY KŘIVKY Moderní počítačová grafika
+
+Náplň cvičení
+• Základy vykreslování ve 2D
+
+• vlastnosti vertexu, definice barev
+
+• množiny souřadnic a vlastností – vertex arrays
+
+• Bézierovy křivky
+
+• Vykreslování textu
+
+Vysoké učení technické v Brně Fakulta elektrotechniky a komunikačních technologií
+
+
+
+3 / 13 
+CVIČENÍ 3: ZÁKLADY VYKRESLOVÁNÍ VE 2D, BÉZIEROVY KŘIVKY Moderní počítačová grafika
+
+Úkol 1
+• dva body o souřadnicích (200, 350) a (300, 350), velikost bodů 25, barva modrá
+
+• kulaté body zajistí GL_POINT_SMOOTH
+
+• čára šířky 25 bodů barvy zelené, od (150, 300) do (350, 250)
+• čára šířky 5 bodů barvy žluté, od (50, 250) do (350, 200), pattern 1:1 zapnuté / vypnuté 
+
+bity (přerušovaná čára)
+• glLineStipple(factor, pattern)
+
+• glEnable( ... )
+
+• pattern má 16 bitů: 0x..., 0b...
+
+• dvě čáry šířky 5 bodů, jedna červená (50, 150) – (350, 100), druhá zelená (50, 100) –
+(350, 150), čáry jsou plné
+
+• porovnejte vykreslené objekty se zapnutou a vypnutou průhledností (aliasingem)
+
+Vysoké učení technické v Brně Fakulta elektrotechniky a komunikačních technologií
+
+
+
+4 / 13 
+CVIČENÍ 3: ZÁKLADY VYKRESLOVÁNÍ VE 2D, BÉZIEROVY KŘIVKY Moderní počítačová grafika
+
+Vykreslování vertexů z polí
+• Pokud máme vykreslovat složitější útvary, je výhodnější čerpat souřadnice vertexů a 
+
+jejich vlastnosti z polí 
+GL_SHORT
+
+glVertexPointer(int size, GL_INT
+GL_FLOAT , int stride, (void*) ptr)
+GL_DOUBLE
+
+GL_UNSIGNED_BYTE
+glColorPointer(int size,  G L _ FLOAT , int stride, (void*) ptr)
+
+...
+
+• Pro zapnutí / vypnutí pole vlastností slouží následující dvě funkce
+GL_COLOR_ARRAY
+
+glEnableClientState( GL_VERTEX_ARRAY )
+
+glDisableClientState( GL_COLOR_ARRAY
+GL_VERTEX_ARRAY )
+
+Vysoké učení technické v Brně Fakulta elektrotechniky a komunikačních technologií
+
+
+
+5 / 13 
+CVIČENÍ 3: ZÁKLADY VYKRESLOVÁNÍ VE 2D, BÉZIEROVY KŘIVKY Moderní počítačová grafika
+
+Vykreslování vrcholů z polí
+• Definicie pro vykreslování vertexů:
+
+• glArrayElement(int i)
+
+• glDrawArrays(enum mode, int first, 
+int count)
+
+• glDrawElements(enum mode, int
+count, Glenum type, (void *) 
+indices)
+
+Vysoké učení technické v Brně Fakulta elektrotechniky a komunikačních technologií
+
+
+
+6 / 13 
+CVIČENÍ 3: ZÁKLADY VYKRESLOVÁNÍ VE 2D, BÉZIEROVY KŘIVKY Moderní počítačová grafika
+
+Úkol 2
+• Doplňte funkci vykreslovaniPole(), kde pomocí příkazů pro vykreslování 
+
+vertexů z polí (pole definována v simpleMesh.h) vykreslíte a zobrazíte jednou 
+barevný obdélník (GL_TRIANGLE_STRIP) a podruhé ze stejného pole 
+trojúhelníky (GL_TRIANGLES).
+
+Vysoké učení technické v Brně Fakulta elektrotechniky a komunikačních technologií
+
+
+
+7 / 13 
+CVIČENÍ 3: ZÁKLADY VYKRESLOVÁNÍ VE 2D, BÉZIEROVY KŘIVKY Moderní počítačová grafika
+
+(Opakování) křivky
+𝑥𝑥 = 𝑥𝑥 𝑡𝑡
+
+𝑸𝑸 𝑡𝑡 = � 𝑦𝑦 = 𝑦𝑦 𝑡𝑡 𝑡𝑡 ∈ [𝑎𝑎, 𝑏𝑏]
+𝑧𝑧 = 𝑧𝑧(𝑡𝑡)
+
+• křivka = zdeformovaná úsečka
+• „lineární“ útvar – nemá obsah
+
+• např. kružnice:
+• 𝑥𝑥 = cos 𝑡𝑡
+• 𝑦𝑦 = sin 𝑡𝑡
+• 𝑡𝑡 ∈ [0,2𝜋𝜋]
+
+Vysoké učení technické v Brně Fakulta elektrotechniky a komunikačních technologií
+
+
+
+8 / 13 
+CVIČENÍ 3: ZÁKLADY VYKRESLOVÁNÍ VE 2D, BÉZIEROVY KŘIVKY Moderní počítačová grafika
+
+Bézierovy křivky
+𝑸𝑸Bez 𝑡𝑡 = � 𝑥𝑥 = 𝑥𝑥 𝑡𝑡
+
+𝑦𝑦 = 𝑦𝑦 𝑡𝑡 𝑡𝑡 ∈ 0, 1
+
+𝑸𝑸Bez 𝑡𝑡 = 𝑻𝑻𝑻𝑻𝑻𝑻
+
+−1 3 −3 1 𝑋𝑋0 𝑌𝑌0
+𝑸𝑸Bez 𝑡𝑡 = 𝑡𝑡3, 𝑡𝑡2, 𝑡𝑡, 1 3 −6 3 0 𝑋𝑋1 𝑌𝑌1
+
+−3 3 0 0 𝑋𝑋2 𝑌𝑌2
+1 0 0 0 𝑋𝑋3 𝑌𝑌3
+
+• lineární kombinace Bernsteinových polynomů
+
+• 𝑸𝑸𝐵𝐵𝐵𝐵𝐵𝐵 𝑡𝑡 = �𝑛𝑛
+𝑘𝑘=0 𝑷𝑷𝑘𝑘𝐵𝐵𝑘𝑘,𝑛𝑛(𝑡𝑡)
+
+Vysoké učení technické v Brně Fakulta elektrotechniky a komunikačních technologií
+
+
+
+9 / 13 
+CVIČENÍ 3: ZÁKLADY VYKRESLOVÁNÍ VE 2D, BÉZIEROVY KŘIVKY Moderní počítačová grafika
+
+Vykreslování Bézierových křivek
+• k výpočtu souřadnic vertexů můžeme přistupovat několika způsoby:
+
+• z definičního vzorce – vytvoříme dostatečný počet hodnot 𝑡𝑡 a po jednom je dosadíme do 
+definičního vzorce
+
+• algoritmem de Casteljau (cv 5) – pro každé 𝑡𝑡 dostaneme rekurzivním výpočtem souřadnici 
+vertexu na křivce
+
+• OpenGL (cv 5) – obsahuje aplikační rozhraní zvané evaluátor, který hlavní práci udělá za nás 
+a navíc provede výpočty přímo na grafické kartě
+
+Vysoké učení technické v Brně Fakulta elektrotechniky a komunikačních technologií
+
+
+
+10 / 13 
+CVIČENÍ 3: ZÁKLADY VYKRESLOVÁNÍ VE 2D, BÉZIEROVY KŘIVKY Moderní počítačová grafika
+
+Úkol 3
+• vykreslete Bézierovu křivku přímo z (maticového) vzorce
+• řídicí polygon
+
+• vytvořenou scénu doplňte o vykreslení řídicích bodů pomocí GL_POINTS
+
+• dále řídící body spojte pomocí čárkované čáry GL_LINE_STRIP, čímž vytvoříte řídicí 
+polygon křivky (doplňte funkci vykresliBeziera())
+
+Vysoké učení technické v Brně Fakulta elektrotechniky a komunikačních technologií
+
+
+
+11 / 13 
+CVIČENÍ 3: ZÁKLADY VYKRESLOVÁNÍ VE 2D, BÉZIEROVY KŘIVKY Moderní počítačová grafika
+
+Úkol 3
+−1 3 −3 1 𝑋𝑋0 𝑌𝑌0
+
+𝑸𝑸Bez 𝑡𝑡 = 𝑡𝑡3, 𝑡𝑡2, 𝑡𝑡, 1 3 −6 3 0 𝑋𝑋1 𝑌𝑌1
+−3 3 0 0 𝑋𝑋2 𝑌𝑌2
+
+1 0 0 0 𝑋𝑋3 𝑌𝑌3
+
+𝑋𝑋0 𝑌𝑌0
+𝑸𝑸Bez 𝑡𝑡 = −𝑡𝑡3 + 3𝑡𝑡2 − 3𝑡𝑡 + 1, 3𝑡𝑡3 − 6𝑡𝑡2 + 3𝑡𝑡, −3𝑡𝑡3 + 3𝑡𝑡2, 𝑡𝑡3
+
+𝑋𝑋1 𝑌𝑌1
+𝑋𝑋2 𝑌𝑌2
+𝑋𝑋3 𝑌𝑌3
+
+𝑸𝑸Bez 𝑡𝑡 = � −𝑡𝑡
+3 + 3𝑡𝑡2 − 3𝑡𝑡 + 1 𝑋𝑋0 + 3𝑡𝑡3 − 6𝑡𝑡2 + 3𝑡𝑡 𝑋𝑋1 + −3𝑡𝑡3 + 3𝑡𝑡2 𝑋𝑋2 + 𝑡𝑡3𝑋𝑋3
+
+−𝑡𝑡3 + 3𝑡𝑡2 − 3𝑡𝑡 + 1 𝑌𝑌0 + 3𝑡𝑡3 − 6𝑡𝑡2 + 3𝑡𝑡 𝑌𝑌1 + −3𝑡𝑡3 + 3𝑡𝑡2 𝑌𝑌2 + 𝑡𝑡3𝑌𝑌3
+
+Vysoké učení technické v Brně Fakulta elektrotechniky a komunikačních technologií
+
+
+
+12 / 13 
+CVIČENÍ 3: ZÁKLADY VYKRESLOVÁNÍ VE 2D, BÉZIEROVY KŘIVKY Moderní počítačová grafika
+
+Vykreslování textu
+• text může být v OpenGL buď bitmapový, nebo vektorový (např. externí knihovna
+
+FreeType)
+• bitmapové fonty
+
+• pozice se inicializuje přes glRasterPos2i() a příbuzné funkce
+
+• vlastní fonty, fonty z knihovny glut
+
+GLUT_BITMAP_8_BY_13
+GLUT_BITMAP_9_BY_15
+GLUT_BITMAP_TIMES_ROMAN_10
+
+glutBitmapCharacter(   G L UT _ B IT M A P_ T IMES_ROMAN_24 , int character)
+GLUT_BITMAP_HELVETICA_10
+GLUT_BITMAP_HELVETICA_12
+GLUT_BITMAP_HELVETICA_18
+
+• pozice v rastru se vypsáním znaku automaticky posune
+Vysoké učení technické v Brně Fakulta elektrotechniky a komunikačních technologií
+
+
+
+13 / 13 
+CVIČENÍ 3: ZÁKLADY VYKRESLOVÁNÍ VE 2D, BÉZIEROVY KŘIVKY Moderní počítačová grafika
+
+Úkol 4
+• vypište aktuální souřadnice řídicích bodů ve formátu
+
+• Ridici bod: … X: … Y: …
+
+• použijte font GLUT_BITMAP_8_BY_13
+
+• pro formátování využijte třídu std::string
+• deklarace proměnné: std::string str;
+
+• konkatenace (zřetězení): str = “prvni cast ” + “druha cast”;
+
+• pro konverzi z číselných hodnot použijte funkci std::to_string()
+
+• souřadnice budou vypisovány vždy na pozici hned vedle řídicích bodů
+
+Vysoké učení technické v Brně Fakulta elektrotechniky a komunikačních technologií
