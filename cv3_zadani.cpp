@@ -113,21 +113,19 @@ void vykreslovaniPole()
 		tempPole[2 * i + 1] = coords[2 * i + 1] + yOffset; // y souradnice
 	}
 
-	// TODO ukol 2
-	// registrace vertex poli
-	// doplnte kod
+	glVertexPointer(2, GL_INT, 0, tempPole);
+	glColorPointer(4, GL_FLOAT, 0, colors);
 
-	// zapnuti vertex poli
-	// doplnte kod
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_COLOR_ARRAY);
 
-	// vykresleni vertex poli
 	if (trianglestrip)
 	{
-		// doplnte kod							 // jako obdelnik
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, numVer);
 	}
 	else
 	{
-		// doplnte kod							// jako trojuhelniky
+		glDrawArrays(GL_TRIANGLES, 0, numVer);
 	}
 }
 
