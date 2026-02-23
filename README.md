@@ -4,7 +4,16 @@
 
 Two OpenGL windows. Window 1 covers primitive rendering and vertex arrays. Window 2 covers Bézier curves and text rendering.
 
-**Files:** `cv3_zadani.cpp`, `simpleMesh.h`
+## Output
+
+<p align="center">
+  <img src="screenshots/podokno1.png" alt="Window 1 - Primitives & Vertex Arrays" width="400"/>
+  <img src="screenshots/podokno2.png" alt="Window 2 - Bézier Curve" width="400"/>
+</p>
+
+<p align="center">
+  <em>Window 1: Primitives & Vertex Arrays</em> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>Window 2: Bézier Curve</em>
+</p>
 
 ---
 
@@ -70,41 +79,3 @@ Ridici bod: 0  X: 60  Y: 400
 - Position: `glRasterPos2i(x, y)` right beside each control point
 - Build string with `std::string` + `std::to_string()` for numbers
 - Render char-by-char in a for loop over `str`
-
----
-
-## Key OpenGL Functions
-
-```cpp
-// Points
-glPointSize(float);
-glEnable(GL_POINT_SMOOTH);
-
-// Lines
-glLineWidth(float);
-glLineStipple(GLint factor, GLushort pattern);  // e.g. factor=1, pattern=0xAAAA
-glEnable(GL_LINE_STIPPLE);
-
-// Vertex arrays
-glVertexPointer(2, GL_INT, 0, ptr);
-glColorPointer(4, GL_FLOAT, 0, ptr);
-glEnableClientState(GL_VERTEX_ARRAY);
-glEnableClientState(GL_COLOR_ARRAY);
-glDrawArrays(GL_TRIANGLE_STRIP, 0, numVer);
-glDrawArrays(GL_TRIANGLES, 0, numVer);
-
-// Text
-glRasterPos2i(x, y);
-glutBitmapCharacter(GLUT_BITMAP_8_BY_13, ch);
-```
-
----
-
-## Build
-
-```bash
-# From project root (CLion or terminal)
-mkdir -p build && cd build
-cmake .. && make cv3_zadani
-./cv3_zadani
-```
