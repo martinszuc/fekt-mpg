@@ -222,8 +222,9 @@ void onMotion(int mx, int my)
 
 	if (aktBod < POCET_RIDICICH_BODU)
 	{
-		// Ukol 3
-		// Doplnte kod pro prepocet souradnic bodu, ktery je tazen
+		// Ukol 3 - zmena pozice chyceného bodu
+		ridiciBody[aktBod][0] = mx;
+		ridiciBody[aktBod][1] = my;
 	}
 
 	glutPostRedisplay();
@@ -271,8 +272,19 @@ void onMouse(int button, int state, int mx, int my)
 		}
 		else
 		{
-			// Ukol 3
-			// Doplnte kod pro nastaveni aktivniho bodu, na ktery bude kliknuto
+			// Ukol 3 - nastaveni aktivniho bodu na zaklade kliknuti
+			const int hitRadius = 20;
+			aktBod = POCET_RIDICICH_BODU; // vychozi: zadny bod
+			for (int i = 0; i < POCET_RIDICICH_BODU; i++)
+			{
+				float dx = mx - ridiciBody[i][0];
+				float dy = my - ridiciBody[i][1];
+				if (dx * dx + dy * dy <= hitRadius * hitRadius)
+				{
+					aktBod = i;
+					break;
+				}
+			}
 		}
 	}
 	else
