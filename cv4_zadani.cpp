@@ -306,26 +306,21 @@ void onMouse(int button, int state, int mx, int my)
 // vytvoreni menu
 void createMenu(void (*func)(int value))
 {
-	// Doplnte prepinac mezi vykreslenim Bezierovy krivky a obrazku
-
-	// vytvoreni podmenu
+	// vytvoreni podmenu pro Konec
 	int idSub = glutCreateMenu(func);
 	glutAddMenuEntry("Ano", MENU_EXITOK);
 	glutAddMenuEntry("Ne", MENU_EXITNO);
 
-	// Ukol 1 - pridejte submenu pro zmenu mezi Bezier a Rect
-
-	// Ukol 4 -  pridejte submenu pro zmenu zapnuti/vypnuti timeru
+	// Ukol 1 - submenu pro zmenu mezi Bezier a Rect
+	int idView = glutCreateMenu(func);
+	glutAddMenuEntry("Bezier", MENU_BEZIER);
+	glutAddMenuEntry("Rect", MENU_RECT);
 
 	// vytvoreni hlavniho menu
 	glutCreateMenu(func);
 
 	glutAddMenuEntry("Reset pozice", MENU_RESET);
-
-	// Ukol 1 aktivujte submenu pro prepinani Bezier a Rect
-
-	// Ukol 4 aktivujte submenu pro zmenu zapnuti/vypnuti timeru
-
+	glutAddSubMenu("Zobrazeni", idView);
 	glutAddSubMenu("Konec", idSub);
 
 	// prirazeni hlavniho menu na tlacitko mysi
@@ -352,12 +347,12 @@ void onMenu(int value)
 		break;
 	case MENU_EXITNO:
 		break;
-
-		// Ukol 1
-		// Doplnte polozky menu - vykresleni obdelniku nebo beziera
-
-		// Ukol 4
-		//
+	case MENU_BEZIER:
+		bezier = true;
+		break;
+	case MENU_RECT:
+		bezier = false;
+		break;
 	}
 
 	glutPostRedisplay();
