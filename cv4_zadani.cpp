@@ -334,11 +334,17 @@ void createMenu(void (*func)(int value))
 	glutAddMenuEntry("Bezier", MENU_BEZIER);
 	glutAddMenuEntry("Rect", MENU_RECT);
 
+	// Ukol 4 - submenu pro zmenu zapnuti/vypnuti timeru
+	int idTimer = glutCreateMenu(func);
+	glutAddMenuEntry("Spustit animaci", MENU_TIM_ON);
+	glutAddMenuEntry("Pozastavit animaci", MENU_TIM_OFF);
+
 	// vytvoreni hlavniho menu
 	glutCreateMenu(func);
 
 	glutAddMenuEntry("Reset pozice", MENU_RESET);
 	glutAddSubMenu("Zobrazeni", idView);
+	glutAddSubMenu("Animace", idTimer);
 	glutAddSubMenu("Konec", idSub);
 
 	// prirazeni hlavniho menu na tlacitko mysi
@@ -370,6 +376,13 @@ void onMenu(int value)
 		break;
 	case MENU_RECT:
 		bezier = false;
+		break;
+	case MENU_TIM_ON:
+		timerOn = true;
+		glutTimerFunc(5, onTimer, 1);
+		break;
+	case MENU_TIM_OFF:
+		timerOn = false;
 		break;
 	}
 
