@@ -1,9 +1,9 @@
 // MPC-MPG cviceni 4
-#include <stdlib.h>
-#include <GLUT\glut.h>
-#include <string>
-#include "simpleMesh.h"
 #include <iostream>
+#include <stdlib.h>
+#include <string>
+#include <GLUT/glut.h>
+#include "simpleMesh.h"
 
 // Menu - definice identifikatoru pro menu (musí být unikátní)
 #define MENU_RESET 1001
