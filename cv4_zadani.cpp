@@ -1,6 +1,6 @@
 // MPC-MPG cviceni 4
 #include <stdlib.h>
-#include <GL\glut.h>
+#include <GLUT\glut.h>
 #include <string>
 #include "simpleMesh.h"
 #include <iostream>
