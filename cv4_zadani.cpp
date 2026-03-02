@@ -170,11 +170,17 @@ void onKeyboard(unsigned char key, int mx, int my)
 	// prevod na mala pismena
 	key = (key > 'A' && key <= 'Z') ? key + 'a' - 'A' : key;
 
-	// Ukol 2
-	// zpracovani klaves
-	// Pridejte pomoci switch case zmenu trianglestrip
+	// Ukol 2 - switch case pro zmenu trianglestrip
+	switch (key)
+	{
+	case 'w':
+		trianglestrip = true;
+		break;
+	case 's':
+		trianglestrip = false;
+		break;
+	}
 
-	// vynuceni prekresleni
 	glutPostRedisplay();
 }
 
