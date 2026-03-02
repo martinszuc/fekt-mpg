@@ -1,0 +1,300 @@
+1 / 11
+CVIČENÍ 4: KOMUNIKAČNÍ PROSTŘEDKY, RASTROVÁ GRAFIKA V OPENGL
+
+Moderní počítačová grafika
+
+KOMUNIKAČNÍ PROSTŘEDKY
+Kurz:
+
+Moderní počítačová grafika
+
+Lektor:
+
+Ing. Michal Švento
+
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+2 / 11
+CVIČENÍ 4: KOMUNIKAČNÍ PROSTŘEDKY, RASTROVÁ GRAFIKA V OPENGL
+
+Moderní počítačová grafika
+
+Náplň cvičení
+• Komunikační prostředky
+• UI – menu
+• klávesnice
+• myš
+• timery (animace bez zásahu uživatele)
+• double buffer
+
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+3 / 11
+CVIČENÍ 4: KOMUNIKAČNÍ PROSTŘEDKY, RASTROVÁ GRAFIKA V OPENGL
+
+Moderní počítačová grafika
+
+Uživatelský vstup
+•
+
+Tvorba kontextových menu
+• po jejich zobrazení GLUT přestane reagovat na událost Display
+• vytvoření menu
+•
+
+int menu = glutCreateMenu(void∗ func)
+
+• nastavení aktuálního menu
+•
+
+glutSetMenu(int menuid)
+
+• přidání položky menu
+•
+
+glutAddMenuEntry(char∗ name, int value)
+
+• přidání položky do aktuálního menu, která ukazuje na další menu
+•
+
+glutAddSubMenu(char∗ name, int menuid)
+
+• přiřazení vyvolání menu na levé nebo na pravé tlačítko myši
+•
+
+glutAttachMenu(int button)
+
+•
+
+glutDetachMenu(int button)
+
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+4 / 11
+CVIČENÍ 4: KOMUNIKAČNÍ PROSTŘEDKY, RASTROVÁ GRAFIKA V OPENGL
+
+Moderní počítačová grafika
+
+Úkol 1
+•
+
+do kontextového menu přidejte položky pro přepínání mezi zobrazením úkolů 1 a 2
+do stejného okna
+• ve funkci createMenu() vytvořte nové submenu a přidejte mu položky Bezier a Rect,
+
+které budou po řadě vracet hodnoty MENU_BEZIER a MENU_RECT
+
+• ve funkci onMenu() měňte logickou proměnnou bezier
+
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+5 / 11
+CVIČENÍ 4: KOMUNIKAČNÍ PROSTŘEDKY, RASTROVÁ GRAFIKA V OPENGL
+
+Moderní počítačová grafika
+
+Uživatelský vstup
+•
+
+Klávesnice
+• znakové – ASCII kód (A, B)
+•
+
+registrace: glutKeyboardFunc(void∗ func)
+
+•
+
+obsluha: void func_name(unsigned char key, int mx, int my)
+
+• speciální – speciální funkce (ENTER, DEL, ŠIPKY)
+•
+
+registrace: glutSpecialFunc(void∗ func)
+
+•
+
+obsluha: void func_name(int key, int mx, int my)
+
+•
+
+GLUT_KEY_UP, GLUT_KEY_DOWN, GLUT_KEY_LEFT, GLUT_KEY_RIGHT
+
+• modifikátory – kombinaci s jinou klávesou (ALT, SHIFT, CTRL)
+
+•
+
+•
+
+int status = glutGetModifiers()
+
+•
+
+GLUT_ACTIVE_SHIFT, GLUT_ACTIVE_CTRL, GLUT_ACTIVE_ALT
+
+Vynucené volání onDisplay()
+
+• glutPostRedisplay()
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+6 / 11
+CVIČENÍ 4: KOMUNIKAČNÍ PROSTŘEDKY, RASTROVÁ GRAFIKA V OPENGL
+
+Moderní počítačová grafika
+
+Úkol 2
+•
+
+Pomocí switch case změňte proměnnou trianglestrip na true při stisku
+klávesy 'w' a na false u klávesy 's’
+
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+7 / 11
+CVIČENÍ 4: KOMUNIKAČNÍ PROSTŘEDKY, RASTROVÁ GRAFIKA V OPENGL
+
+Moderní počítačová grafika
+
+Uživatelský vstup
+•
+
+Myš
+• změna stavu tlačítek a změna pozice ukazatele
+• glutMouseFunc(void∗ func)
+• void func_name(int button, int state, int mx, int my)
+
+• button: GLUT_LEFT_BUTTON, GLUT_RIGHT_BUTTON
+• state: GLUT_DOWN, GLUT_UP
+• souřadnice myši vzhledem k oknu v okamžik události: mx, my
+• glutMotionFunc(void∗ func)
+
+• void func_name(int mx, int my)
+• glutPassiveMotionFunc(void∗ func)
+
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+8 / 11
+CVIČENÍ 4: KOMUNIKAČNÍ PROSTŘEDKY, RASTROVÁ GRAFIKA V OPENGL
+
+Moderní počítačová grafika
+
+Úkol 3
+•
+
+Změňte pozici řídících bodů stisknutím tlačítka a tažením myší
+• Ve funkci OnMouse doplňte kód pro nastavení aktivního bodu, na který bylo kliknuto
+• Ve funkci OnMotion doplňte kód, který změní pozici chyceného bodu.
+
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+9 / 11
+CVIČENÍ 4: KOMUNIKAČNÍ PROSTŘEDKY, RASTROVÁ GRAFIKA V OPENGL
+
+Moderní počítačová grafika
+
+Animace
+•
+
+Časovače
+• vyvolání událostí bez interakce uživatele
+• dvě základní formy
+• Timer – událost se provede po uplynutí definovaného časového intervalu
+
+• registrace: glutTimerFunc(unsigned msecs, void∗ func, int value)
+• msecs – interval, za který se funkce volá znovu
+• func – callback (logika co se má dít při opětovném volání)
+• value – celé číslo, které se prodá callback funkci (např. ID Timeru, externí stav)
+
+• Idle – událost se vyvolá vždy, když má aplikace přidělen od OS strojový čas a nezpracovává žádnou
+
+jinou událost, (nestabilní, radši se vyhnout)
+
+• registrace: glutIdleFunc(void∗ func)
+
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+10 / 11
+CVIČENÍ 4: KOMUNIKAČNÍ PROSTŘEDKY, RASTROVÁ GRAFIKA V OPENGL
+
+Moderní počítačová grafika
+
+Úkol 4
+•
+
+Přidejte do kontextového menu submenu s položkami pro pozastavení a spuštění
+animace.
+
+•
+
+Implementujte zapnutí a vypnutí časovače pomocí funkce glutTimerFunc a
+proměnné timerOn
+
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+11 / 11
+CVIČENÍ 4: KOMUNIKAČNÍ PROSTŘEDKY, RASTROVÁ GRAFIKA V OPENGL
+
+Moderní počítačová grafika
+
+Double buffering
+•
+
+Pokud provedení funkce glFlush() trvá déle než jeden vertikální překreslovací takt
+obrazovky, scéna se v průběhu vykreslování liší mezi jednotlivými po sobě následujícími
+snímky.
+
+•
+
+Projevuje se to mizejícími a objevujícími se objekty na scéně.
+
+•
+
+Zapnutí double bufferingu pomocí funkce
+• glutInitDisplayMode(unsigned int mode)
+• Módy:
+
+•
+
+•
+
+GLUT_RGBA true-color vykreslovací režim
+
+•
+
+GLUT_SINGLE bez double bufferingu
+
+•
+
+GLUT_DOUBLE vytvoří další framebuffer a zapne double buffering
+
+•
+
+GLUT_DEPTH vytvoří tzv. depth-buffer (nebo také z-buffer)
+
+Přepnutí bufferů:
+• glutSwapBuffers()
+
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+
