@@ -1,0 +1,339 @@
+1 / 16
+CVIČENÍ 5: ALGORITMUS DE CASTELJAU, SUBDIVISIONS, BÉZIEROVY PLÁTY                           Moderní počítačová grafika
+
+
+
+
+  ALGORITMUS DE CASTELJAU
+  SUBDIVISIONS
+  BÉZIEROVY PLÁTY
+  Kurz:                   Moderní počítačová grafika
+
+  Lektor:                 Ing. Michal Švento
+
+
+
+
+Vysoké učení technické v Brně                                       Fakulta elektrotechniky a komunikačních technologií
+2 / 16
+CVIČENÍ 5: ALGORITMUS DE CASTELJAU, SUBDIVISIONS, BÉZIEROVY PLÁTY                           Moderní počítačová grafika
+
+
+
+
+Náplň cvičení
+1. Implementace algoritmu de Casteljau pro Bézierovu kubiku – bodovaný úkol
+
+2. Subdivisions algoritmem de Casteljau
+
+3. Bézierovy pláty
+
+4. Subdivisions plátů
+
+
+
+
+Vysoké učení technické v Brně                                       Fakulta elektrotechniky a komunikačních technologií
+3 / 16
+CVIČENÍ 5: ALGORITMUS DE CASTELJAU, SUBDIVISIONS, BÉZIEROVY PLÁTY                                                                      Moderní počítačová grafika
+
+
+
+
+Algoritmus de Casteljau
+                                                                                P1                                              P2
+
+
+
+
+                                                                                                                                                       P3
+
+
+                                                                       P0
+
+                                                                    https://www.utko.fekt.vut.cz/~rajmic/applets/deCasteljau/deCasteljau.html
+Vysoké učení technické v Brně                                                                                  Fakulta elektrotechniky a komunikačních technologií
+4 / 16
+CVIČENÍ 5: ALGORITMUS DE CASTELJAU, SUBDIVISIONS, BÉZIEROVY PLÁTY                                        Moderní počítačová grafika
+
+
+
+
+Algoritmus de Casteljau
+•        mějme dáno 𝑁𝑁 řídících bodů
+•        algoritmus má (𝑁𝑁 − 1) iterací
+•        v 𝑖𝑖-té iteraci pro čas 𝑡𝑡 počítáme
+           iterace                               iterace               iterace
+
+
+
+          𝑃𝑃𝑗𝑗𝑖𝑖 = 1 − 𝑡𝑡 𝑃𝑃𝑗𝑗𝑖𝑖−1 + 𝑡𝑡𝑃𝑃𝑗𝑗+1
+                                          𝑖𝑖−1
+
+
+         index bodu                       index bodu                index bodu
+
+•        v každé iteraci dostaneme o jeden řídící
+         bod méně (poslední „zahazujeme“)
+•        v poslední iteraci získáváme jediný bod
+         – bod ležící na křivce
+
+Vysoké učení technické v Brně                                                    Fakulta elektrotechniky a komunikačních technologií
+5 / 16
+CVIČENÍ 5: ALGORITMUS DE CASTELJAU, SUBDIVISIONS, BÉZIEROVY PLÁTY                            Moderní počítačová grafika
+
+
+
+
+Úkol 1                                                                bodovaný úkol
+1. Doplňte chybějící kód ve funkci deCasteljau() pro generování bodů Bézierovy
+         kubiky algoritmem de Casteljau.
+
+
+
+
+                                                                    01_deCasteljau.cpp
+Vysoké učení technické v Brně                                        Fakulta elektrotechniky a komunikačních technologií
+6 / 16
+CVIČENÍ 5: ALGORITMUS DE CASTELJAU, SUBDIVISIONS, BÉZIEROVY PLÁTY                                                    Moderní počítačová grafika
+
+
+
+
+Úkol 1                                                                                           bodovaný úkol
+
+                                                                    P0112    P12
+
+                                P01
+
+
+                                                                            PC     P1223
+
+
+
+
+                                                                                           P23
+
+
+
+                                                                                            01_deCasteljau.cpp
+Vysoké učení technické v Brně                                                                Fakulta elektrotechniky a komunikačních technologií
+7 / 16
+CVIČENÍ 5: ALGORITMUS DE CASTELJAU, SUBDIVISIONS, BÉZIEROVY PLÁTY                              Moderní počítačová grafika
+
+
+
+
+Subdivisions
+•        pomocí algoritmů jako jsou Catmull–Clark, Doo–Sabin, Loop,... lze iterativním
+         způsobem dosáhnout hladšího povrchu objektů
+
+
+
+
+Vysoké učení technické v Brně                                          Fakulta elektrotechniky a komunikačních technologií
+8 / 16
+CVIČENÍ 5: ALGORITMUS DE CASTELJAU, SUBDIVISIONS, BÉZIEROVY PLÁTY                            Moderní počítačová grafika
+
+
+
+
+Úkol 2
+1. Realizovat subdivision zadané křivky
+          metodou de Casteljau
+2. Vykreslit:
+
+         • původní křivku + její řídicí body
+
+         • obě dvě nové křivky + jejich řídicí body
+
+
+
+3. Scéna půjde měnit pomocí myši,
+          reagovat budou ale pouze řídicí
+          body původní křivky
+         • Subdivision se aktualizuje automaticky
+
+
+                                                                    02_subdivision.cpp
+Vysoké učení technické v Brně                                        Fakulta elektrotechniky a komunikačních technologií
+9 / 16
+CVIČENÍ 5: ALGORITMUS DE CASTELJAU, SUBDIVISIONS, BÉZIEROVY PLÁTY                            Moderní počítačová grafika
+
+
+
+
+Úkol 2
+
+
+
+
+                                                                    02_subdivision.cpp
+Vysoké učení technické v Brně                                        Fakulta elektrotechniky a komunikačních technologií
+10 / 16
+CVIČENÍ 5: ALGORITMUS DE CASTELJAU, SUBDIVISIONS, BÉZIEROVY PLÁTY                                                          Moderní počítačová grafika
+
+
+
+
+Bézierovy pláty
+•         parametrické vyjádření
+                                                                                 𝑥𝑥 = 𝑥𝑥(𝑢𝑢, 𝑣𝑣)
+                                                                    𝑄𝑄 𝑢𝑢, 𝑣𝑣 = �𝑦𝑦 = 𝑦𝑦(𝑢𝑢, 𝑣𝑣)
+                                                                                 𝑧𝑧 = 𝑧𝑧(𝑢𝑢, 𝑣𝑣)
+•         tentokrát nemáme jednu proměnnou 𝑡𝑡 znázorňující čas, ale dvě proměnné 𝑢𝑢, 𝑣𝑣
+
+
+
+
+Vysoké učení technické v Brně                                                                      Fakulta elektrotechniky a komunikačních technologií
+11 / 16
+CVIČENÍ 5: ALGORITMUS DE CASTELJAU, SUBDIVISIONS, BÉZIEROVY PLÁTY                                                             Moderní počítačová grafika
+
+
+
+
+Bézierovy pláty
+•         výpočet nejčastěji používané bikubiky:
+                                                                      −1   3    −3   1      −1    3   −3          1        𝑣𝑣 3
+                     𝑥𝑥 𝑢𝑢, 𝑣𝑣 = 𝑢𝑢3
+                                                                       3   −6    3   0
+                                                                                       𝐆𝐆𝑥𝑥
+                                                                                             3   −6    3          0        𝑣𝑣 2
+                                                   𝑢𝑢2       𝑢𝑢     1
+                                                                      −3   3     0   0      −3    3    0          0         𝑣𝑣
+                                                                       1   0     0   0       1    0    0          0         1
+
+
+                                                                      −1    3   −3   1      −1    3   −3          1        𝑣𝑣 3
+                     𝑦𝑦 𝑢𝑢, 𝑣𝑣 = 𝑢𝑢3
+                                                                       3   −6    3   0
+                                                                                       𝐆𝐆𝑦𝑦
+                                                                                             3   −6    3          0        𝑣𝑣 2
+                                                   𝑢𝑢2       𝑢𝑢     1
+                                                                      −3    3    0   0      −3    3    0          0         𝑣𝑣
+                                                                       1    0    0   0       1    0    0          0         1
+
+
+                                                                      −1    3   −3   1      −1    3   −3          1       𝑣𝑣 3
+                     𝑧𝑧 𝑢𝑢, 𝑣𝑣 = 𝑢𝑢3
+                                                                       3   −6    3   0
+                                                                                       𝐆𝐆𝑧𝑧
+                                                                                             3   −6    3          0       𝑣𝑣 2
+                                                   𝑢𝑢2       𝑢𝑢     1
+                                                                      −3    3    0   0      −3    3    0          0        𝑣𝑣
+                                                                       1    0    0   0       1    0    0          0        1
+Vysoké učení technické v Brně                                                                         Fakulta elektrotechniky a komunikačních technologií
+12 / 16
+CVIČENÍ 5: ALGORITMUS DE CASTELJAU, SUBDIVISIONS, BÉZIEROVY PLÁTY                                     Moderní počítačová grafika
+
+
+
+
+Bézierovy pláty
+•         matice 𝐆𝐆𝑥𝑥 , 𝐆𝐆𝑦𝑦 , 𝐆𝐆𝑧𝑧 jsou formátu 4×4 a obsahují příslušné souřadnice 16 řídících
+          bodů 𝐏𝐏0,0 , … , 𝐏𝐏3,3
+
+
+
+
+Vysoké učení technické v Brně                                                 Fakulta elektrotechniky a komunikačních technologií
+13 / 16
+CVIČENÍ 5: ALGORITMUS DE CASTELJAU, SUBDIVISIONS, BÉZIEROVY PLÁTY                             Moderní počítačová grafika
+
+
+
+
+Úkol 3
+1. Ve funkci onDisplay() pomocí evaluátoru vykreslete plochu Bézierova plátu
+          primitivou GL_POINTS.
+2. Ve směru 𝑢𝑢 i ve směru 𝑣𝑣 vykreslete body s hustotou 50.
+
+
+
+
+                                                                    03_BezieruvPlat.cpp
+Vysoké učení technické v Brně                                         Fakulta elektrotechniky a komunikačních technologií
+14 / 16
+CVIČENÍ 5: ALGORITMUS DE CASTELJAU, SUBDIVISIONS, BÉZIEROVY PLÁTY                                                                  Moderní počítačová grafika
+
+
+
+
+Nápověda k evaluátoru OpenGL
+•         evaluátor pro 3D je již zapnutý pomocí
+                                                                    glEnable(GL_MAP2_VERTEX_3);
+•         nastavení evaluátoru
+                                                                glMap2f(     GL_MAP2_VERTEX_3,
+
+                                                                             GLfloat u1,
+
+                                                                             GLfloat u2,
+
+                                                                             GLint ustride,
+
+                                                                             GLint uorder,
+
+                                                                             GLfloat v1,
+
+                                                                             GLfloat v2,
+
+                                                                             GLint vstride,
+
+                                                                             GLint vorder,
+
+                                                                             const GLfloat * points   );
+
+•         výpočet bodu se provádí pomocí
+                                                                       glEvalCoord2f(u, v);
+
+Vysoké učení technické v Brně                                                                              Fakulta elektrotechniky a komunikačních technologií
+15 / 16
+CVIČENÍ 5: ALGORITMUS DE CASTELJAU, SUBDIVISIONS, BÉZIEROVY PLÁTY                                                                            Moderní počítačová grafika
+
+
+
+
+Nápověda k evaluátoru OpenGL
+float ridiciBody[4][4][3] = {
+
+                                𝑢𝑢
+                        { {-15, -15,          20},       {-5, -15,        40},   {5, -15,    40},   {15, -15,    20} },
+
+                        { {-15,      -5,      10},       {-5,       -5,   30},   {5,   -5,   30},   {15,   -5,   10} },
+              𝑣𝑣
+                       { {-15,         5,       0},      {-5,        5,   20},   {5,   5,    20},   {15,    5,   0} },
+
+                       { {-15,       15, -20},           {-5,       15,   0},    {5,   15,   0},    {15,   15, -20} }     };
+
+
+
+•   ustride specifies the number of floats or doubles between the beginning of control point 𝐏𝐏𝑖𝑖,𝑗𝑗 and the beginning of control point 𝐏𝐏𝑖𝑖+1,𝑗𝑗
+
+•   uorder specifies the dimension of the control point array in the 𝑢𝑢 axis
+
+
+
+•   vstride specifies the number of floats or doubles between the beginning of control point 𝐏𝐏𝑖𝑖,𝑗𝑗 and the beginning of control point 𝐏𝐏𝑖𝑖,𝑗𝑗+1
+
+•   vorder specifies the dimension of the control point array in the 𝑣𝑣 axis
+
+
+
+
+Vysoké učení technické v Brně                                                                                        Fakulta elektrotechniky a komunikačních technologií
+16 / 16
+CVIČENÍ 5: ALGORITMUS DE CASTELJAU, SUBDIVISIONS, BÉZIEROVY PLÁTY                             Moderní počítačová grafika
+
+
+
+
+Úkol 4
+Porovnejte, jaký efekt mají subdivisions na zobrazenou mřížku bodů s evaluátorem
+
+
+
+
+                                                                    03_BezieruvPlat.cpp
+Vysoké učení technické v Brně                                         Fakulta elektrotechniky a komunikačních technologií
+
