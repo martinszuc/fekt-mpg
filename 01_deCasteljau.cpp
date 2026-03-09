@@ -1,5 +1,6 @@
 ﻿#include <stdlib.h>
-#include <GL\glut.h>
+#include <GLUT/glut.h> // macOS
+//#include <GL\glut.h> // todo Win
 #include <string>
 
 using namespace std;

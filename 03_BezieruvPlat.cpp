@@ -3,7 +3,8 @@
 
 #include <cmath>
 #include <iostream>
-#include <GL\glut.h>
+#include <GLUT/glut.h> // macOS
+//#include <GL\glut.h> // todo Win
 
 using namespace std;
 
@@ -218,8 +219,7 @@ void onDisplay(void)
 
 	glDisable(GL_BLEND);
 
-	// doplnte kod
-	// pomoci evaluatoru vykreslete plochu Bezierova platu primitivem POINTS s hustotou 50
+	vykresliBezieruvPlat(ridiciBody, 50);
 
 	glFlush();
 	glutSwapBuffers();
