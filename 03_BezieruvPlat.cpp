@@ -88,11 +88,34 @@ void vykresliBezieruvPlat(GLfloat points[][4][3], int density = 20, int dimensio
 // density: urcuje pocet bodu medzi ctverici bodu
 {
 
-	glEnable(GL_MAP2_VERTEX_3); // povoleni 2D evaluatoru
-	glEnable(GL_MAP2_COLOR_4);	// mapovani barev pomoci evaluatoru
+	glEnable(GL_MAP2_VERTEX_3);
+	glEnable(GL_MAP2_COLOR_4);
 
-	// predani ridicich bodu Bezierovy plochy
-	// Ukol 3: Pomoci glMap2f nastavte evaluator
+	// layout float[u][v][xyz]: ustride = dimensions*3 (step over one u-row),
+	// vstride = 3 (step to next v-point within same u-row)
+	glMap2f(GL_MAP2_VERTEX_3,
+		0.0f, 1.0f,        // u range
+		dimensions * 3,    // ustride
+		dimensions,        // uorder
+		0.0f, 1.0f,        // v range
+		3,                 // vstride
+		dimensions,        // vorder
+		&points[0][0][0]);
+
+	glPointSize(2.0);
+	glColor3f(1.0, 0.0, 1.0);
+	glBegin(GL_POINTS);
+	for (int i = 0; i <= density; i++)
+	{
+		for (int j = 0; j <= density; j++)
+		{
+			glEvalCoord2f((float)i / density, (float)j / density);
+		}
+	}
+	glEnd();
+
+	glDisable(GL_MAP2_VERTEX_3);
+	glDisable(GL_MAP2_COLOR_4);
 }
 
 void subdivisionCasteljau()
