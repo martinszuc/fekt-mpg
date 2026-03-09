@@ -1,4 +1,4 @@
-﻿#include <stdlib.h>
+#include <stdlib.h>
 #include <GLUT/glut.h> // macOS
 //#include <GL\glut.h> // todo Win
 #include <string>
@@ -90,17 +90,25 @@ void deCasteljau()
 	{
 		t = (double)s / (double)(STEPS - 1);
 
-		// Doplnte vypocet bodu na krivce pro danou hodnotu parametru t
-
-		nalezeneBody[s][0] = 0;
-		nalezeneBody[s][1] = 0;
-
-		// Nastaveni ridicich bodu na puvodni hodnoty
+		// reset working points to original values
 		for (int j = 0; j < POCET_RIDICICH_BODU; j++)
 		{
 			ridiciBodyPracovni[j][0] = ridiciBodyZalozni[j][0];
 			ridiciBodyPracovni[j][1] = ridiciBodyZalozni[j][1];
 		}
+
+		// N-1 iterations; after the last one [0] holds the point on the curve
+		for (int i = 1; i < POCET_RIDICICH_BODU; i++)
+		{
+			for (int j = 0; j < POCET_RIDICICH_BODU - i; j++)
+			{
+				ridiciBodyPracovni[j][0] = (1.0 - t) * ridiciBodyPracovni[j][0] + t * ridiciBodyPracovni[j + 1][0];
+				ridiciBodyPracovni[j][1] = (1.0 - t) * ridiciBodyPracovni[j][1] + t * ridiciBodyPracovni[j + 1][1];
+			}
+		}
+
+		nalezeneBody[s][0] = ridiciBodyPracovni[0][0];
+		nalezeneBody[s][1] = ridiciBodyPracovni[0][1];
 	}
 }
 
