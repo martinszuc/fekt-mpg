@@ -121,6 +121,7 @@ void onDisplay3D(void)
 	gluLookAt(4, 4, 16,   // eye position
 	         0, 0, 0,    // looking at origin
 	         0, 1, 0);   // up is +Y
+	glRotatef(angle, 0, 0, 1);
 	vykresliObjekt();
 
 
@@ -140,8 +141,14 @@ void onDisplay2D(void)
 	glLoadIdentity();
 	glTranslatef(50, 50, 0);
 	glScalef(0.5, 0.5, 1.0);
-	glRotatef(-15, 0, 0, 1);   // clockwise = negative angle
+	glRotatef(angle, 0, 0, 1);
 	vykresliDomecek();
+
+	glPushMatrix();
+	glLoadIdentity();
+	glColor3f(1, 1, 1);
+	bitmapText(-200, 220, GLUT_BITMAP_HELVETICA_12, "Rotace domu");
+	glPopMatrix();
 
 	glDisable(GL_DEPTH_TEST);
 	glutSwapBuffers();
@@ -154,8 +161,12 @@ void onTimer(int value)
 {
 	if (timerOn)
 	{
-		// doplnte kod (ukol 3)
-
+		angle += 5;
+		glutSetWindow(window2);
+		glutPostRedisplay();
+		glutSetWindow(window1);
+		glutPostRedisplay();
+		glutTimerFunc(15, onTimer, value);
 	}
 }
 
