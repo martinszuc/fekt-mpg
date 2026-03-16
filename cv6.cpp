@@ -100,8 +100,9 @@ void onReshape(int w, int h)             // event handler pro zmenu velikosti ok
 	}
 	else if (window == window2) {
 
-		// doplnte kod (ukol 2)
-
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glOrtho(-double(w)/2, double(w)/2, -double(h)/2, double(h)/2, -1, 1);
 
 	}
 
@@ -135,8 +136,12 @@ void onDisplay2D(void)
 	glClearDepth(1.0);
 	glClear(GL_DEPTH_BUFFER_BIT);
 
-	// doplnte kod (ukol 2 a 3)
-	
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	glTranslatef(50, 50, 0);
+	glScalef(0.5, 0.5, 1.0);
+	glRotatef(-15, 0, 0, 1);   // clockwise = negative angle
+	vykresliDomecek();
 
 	glDisable(GL_DEPTH_TEST);
 	glutSwapBuffers();
