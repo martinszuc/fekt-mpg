@@ -3,6 +3,8 @@
 Lab 6 of *Modern Computer Graphics* (MPC-MPG).  
 Two-window OpenGL app covering 3D projection, camera setup, affine transforms, and timer-driven animation.
 
+![Both windows with rotation](screenshots/gif1.gif)
+
 ---
 
 ## Task 1 — 3D Scene: Projection & Camera (`cv6_zadani.cpp`)
@@ -10,11 +12,6 @@ Two-window OpenGL app covering 3D projection, camera setup, affine transforms, a
 Implemented projection in `onReshape()` and camera setup in `onDisplay3D()`.  
 `gluPerspective` for perspective projection; `gluLookAt(4, 4, 16)` for camera at origin.  
 3D colored cube rendered via `vykresliObjekt()`.
-
-| Before | After |
-|:---:|:---:|
-| ![orig1](screenshots/orig1.png) | ![done1](screenshots/done1.png) |
-| placeholder | 3D cube with perspective and camera |
 
 ---
 
@@ -24,11 +21,6 @@ Implemented orthographic projection in `onReshape()` for window2 and transforms 
 `glTranslatef(50, 50, 0)`, `glScalef(0.5, 0.5, 1.0)`, `glRotatef(-15, 0, 0, 1)` before `vykresliDomecek()`.  
 House rotated 15° CW, scaled to half, translated to +50x, +50y.
 
-| Before | After |
-|:---:|:---:|
-| ![orig2](screenshots/orig2.png) | ![done2](screenshots/done2.png) |
-| placeholder | House with transforms applied |
-
 ---
 
 ## Task 3 — Animation (`cv6_zadani.cpp`)
@@ -36,11 +28,6 @@ House rotated 15° CW, scaled to half, translated to +50x, +50y.
 Implemented timer-driven rotation in `onTimer()`: `angle += 5` every 15 ms, redraw both windows.  
 Static "Rotace domu" text in window2 via `glPushMatrix`/`glPopMatrix`.  
 Same `angle` applied to 3D cube in window1.
-
-| Before | After |
-|:---:|:---:|
-| ![orig3](screenshots/orig3.png) | ![done3](screenshots/done3.png) |
-| placeholder | Animated rotation in both windows |
 
 ---
 
