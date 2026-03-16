@@ -8,15 +8,11 @@ Modern Computer Graphics (MPC-MPG) — exercise repository. Code lives on indivi
 
 Introductory C tasks: division, pointers, conditionals, multiply/sum functions.
 
-*No screenshot*
-
 ---
 
 ## [CV2](tree/cv2) — OpenGL: Introduction to Rendering
 
 Three windows: house outline, parametric parabola, transparency blending.
-
-*No screenshot*
 
 ---
 
@@ -24,7 +20,7 @@ Three windows: house outline, parametric parabola, transparency blending.
 
 Primitives, vertex arrays, Bézier curves, text rendering in two OpenGL windows.
 
-![Window 1 — Primitives](screenshots/cv3/podokno1.png) ![Window 2 — Bézier](screenshots/cv3/podokno2.png)
+<img src="screenshots/cv3/podokno1.png" alt="Window 1 — Primitives" width="280"/> <img src="screenshots/cv3/podokno2.png" alt="Window 2 — Bézier" width="280"/>
 
 ---
 
@@ -32,15 +28,13 @@ Primitives, vertex arrays, Bézier curves, text rendering in two OpenGL windows.
 
 Bezier/rect context menu, keyboard control for triangle strip, mouse drag for control points.
 
-*No screenshot*
-
 ---
 
 ## [CV5](tree/cv5) — De Casteljau, Subdivision, Bézier Patch
 
 De Casteljau algorithm, curve subdivision at t=0.5, bicubic Bézier surface via OpenGL evaluator.
 
-![Task 1](screenshots/cv5/done1.png) ![Task 2](screenshots/cv5/done2.png) ![Task 3](screenshots/cv5/done3.png)
+<img src="screenshots/cv5/done1.png" alt="Task 1" width="200"/> <img src="screenshots/cv5/done2.png" alt="Task 2" width="200"/> <img src="screenshots/cv5/done3.png" alt="Task 3" width="200"/>
 
 ---
 
@@ -48,4 +42,4 @@ De Casteljau algorithm, curve subdivision at t=0.5, bicubic Bézier surface via 
 
 Two-window app: 3D cube with perspective and camera, 2D house with transforms, timer-driven animation.
 
-![Both windows with rotation](screenshots/cv6/gif1.gif)
+<img src="screenshots/cv6/gif1.gif" alt="Both windows with rotation" width="400"/>
