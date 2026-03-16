@@ -93,16 +93,16 @@ void onReshape(int w, int h)             // event handler pro zmenu velikosti ok
 	int window = glutGetWindow();
 	if (window == window1) {
 
-		// doplnte kod (ukol 1)
-
-		// gluPerspective(fov, (double)w/(double)h, nearPlane, farPlane);
-
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		gluPerspective(fov, (double)w / (double)h, nearPlane, farPlane);
 
 	}
 	else if (window == window2) {
 
-		// doplnte kod (ukol 2)
-
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glOrtho(-double(w)/2, double(w)/2, -double(h)/2, double(h)/2, -1, 1);
 
 	}
 
@@ -116,7 +116,13 @@ void onDisplay3D(void)
 	glClear(GL_DEPTH_BUFFER_BIT);
 	glEnable(GL_DEPTH_TEST);
 
-	// doplnte kod (ukol 1 a 3)
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	gluLookAt(4, 4, 16,   // eye position
+	         0, 0, 0,    // looking at origin
+	         0, 1, 0);   // up is +Y
+	glRotatef(angle, 0, 0, 1);
+	vykresliObjekt();
 
 
 	glDisable(GL_DEPTH_TEST);
@@ -131,8 +137,18 @@ void onDisplay2D(void)
 	glClearDepth(1.0);
 	glClear(GL_DEPTH_BUFFER_BIT);
 
-	// doplnte kod (ukol 2 a 3)
-	
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	glTranslatef(50, 50, 0);
+	glScalef(0.5, 0.5, 1.0);
+	glRotatef(angle, 0, 0, 1);
+	vykresliDomecek();
+
+	glPushMatrix();
+	glLoadIdentity();
+	glColor3f(1, 1, 1);
+	bitmapText(-200, 220, GLUT_BITMAP_HELVETICA_12, "Rotace domu");
+	glPopMatrix();
 
 	glDisable(GL_DEPTH_TEST);
 	glutSwapBuffers();
@@ -145,8 +161,12 @@ void onTimer(int value)
 {
 	if (timerOn)
 	{
-		// doplnte kod (ukol 3)
-
+		angle += 5;
+		glutSetWindow(window2);
+		glutPostRedisplay();
+		glutSetWindow(window1);
+		glutPostRedisplay();
+		glutTimerFunc(15, onTimer, value);
 	}
 }
 

@@ -5,7 +5,7 @@ Two-window OpenGL app covering 3D projection, camera setup, affine transforms, a
 
 ---
 
-## Task 1 — 3D Scene: Projection & Camera (`cv6.cpp`)
+## Task 1 — 3D Scene: Projection & Camera (`cv6_zadani.cpp`)
 
 Implemented projection in `onReshape()` and camera setup in `onDisplay3D()`.  
 `gluPerspective` for perspective projection; `gluLookAt(4, 4, 16)` for camera at origin.  
@@ -18,7 +18,7 @@ Implemented projection in `onReshape()` and camera setup in `onDisplay3D()`.
 
 ---
 
-## Task 2 — 2D House with Transforms (`cv6.cpp`)
+## Task 2 — 2D House with Transforms (`cv6_zadani.cpp`)
 
 Implemented orthographic projection in `onReshape()` for window2 and transforms in `onDisplay2D()`.  
 `glTranslatef(50, 50, 0)`, `glScalef(0.5, 0.5, 1.0)`, `glRotatef(-15, 0, 0, 1)` before `vykresliDomecek()`.  
@@ -31,7 +31,7 @@ House rotated 15° CW, scaled to half, translated to +50x, +50y.
 
 ---
 
-## Task 3 — Animation (`cv6.cpp`)
+## Task 3 — Animation (`cv6_zadani.cpp`)
 
 Implemented timer-driven rotation in `onTimer()`: `angle += 5` every 15 ms, redraw both windows.  
 Static "Rotace domu" text in window2 via `glPushMatrix`/`glPopMatrix`.  
@@ -53,8 +53,8 @@ Two-window OpenGL app. Window 1 is a 3D scene (colored cube), Window 2 is a 2D s
 ```bash
 mkdir -p build && cd build
 cmake ..
-make cv6
-./cv6
+make cv6_zadani
+./cv6_zadani
 ```
 
 > macOS deprecation warnings (GLUT, OpenGL) are suppressed via `GL_SILENCE_DEPRECATION` — safe to ignore.
@@ -63,7 +63,7 @@ make cv6
 
 | File | Purpose |
 |---|---|
-| `cv6.cpp` | Full implementation (rename from `cv6_zadani.cpp`) |
+| `cv6_zadani.cpp` | Full implementation |
 
 ## Controls
 
