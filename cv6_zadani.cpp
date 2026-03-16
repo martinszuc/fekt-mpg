@@ -1,6 +1,7 @@
 /// MPC-MPG cviceni 6 - transformace
 #include <stdlib.h>
-#include <GL\glut.h>
+// #include <GL\glut.h>
+#include <GLUT/glut.h>
 #include <string>
 //#include <iostream>
 
