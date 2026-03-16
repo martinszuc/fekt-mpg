@@ -1,0 +1,379 @@
+1 / 13
+CVIČENÍ 6: ZOBRAZENÍ 3D SCÉNY, GEOMETRICKÉ TRANSFORMACE
+
+Moderní počítačová grafika
+
+ZOBRAZENÍ 3D SCÉNY
+GEOMETRICKÉ TRANSFORMACE
+Kurz:
+
+Moderní počítačová grafika
+
+Lektor:
+
+Ing. Michal Švento
+
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+2 / 13
+CVIČENÍ 6: ZOBRAZENÍ 3D SCÉNY, GEOMETRICKÉ TRANSFORMACE
+
+Moderní počítačová grafika
+
+Náplň cvičení
+1. Zobrazení 3D scény
+• Ortografická projekce
+• Perspektivní projekce
+• Práce s kamerou
+
+2. Geometrické transformace
+3. Transformace scény
+
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+3 / 13
+CVIČENÍ 6: ZOBRAZENÍ 3D SCÉNY, GEOMETRICKÉ TRANSFORMACE
+
+Moderní počítačová grafika
+
+abstraktní 3D scéna
+
+geometrické
+transformace
+3D scéna z pohledu
+pozorovatele
+
+zobrazení 3D scény
+– práce s kamerou
+
+abstraktní 3D pozorovatel
+
+GL_MODELVIEW
+GL_PROJECTION
+
+zobrazení 3D scény
+– projekce
+
+automatická smyčka (GLUT)
+2D průmět z pohledu
+pozorovatele
+
+2D obrazovka
+
+rasterizace
+
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+4 / 13
+CVIČENÍ 6: ZOBRAZENÍ 3D SCÉNY, GEOMETRICKÉ TRANSFORMACE
+
+Moderní počítačová grafika
+
+Zobrazení 3D scény
+•
+
+Nastavení módu pomocí matice:
+• glMatrixMode(MATICE)
+
+•
+
+Na nastavenou matici se dále budou vztahovat jednotlivé operace (transformace).
+
+•
+
+Matice:
+• GL_MODELVIEW = MODEL + VIEW = transformace objektu + pohledu (kamery)
+• GL_PROJECTION (ortogonální, perspektivní)
+• GL_TEXTURE
+• GL_COLOR
+
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+5 / 13
+CVIČENÍ 6: ZOBRAZENÍ 3D SCÉNY, GEOMETRICKÉ TRANSFORMACE
+
+Moderní počítačová grafika
+
+Zobrazení 3D scény
+•
+
+Zobrazení 3D scény lze na výstupním 2D zařízení realizovat pomocí různých
+projekcí.
+
+•
+
+Zobrazení souřadnic bodů z původních tří dimenzí do zobrazovaných dvou.
+
+•
+
+Ortografické / perspektivní.
+
+•
+
+Pohledový objem:
+• Pomocí průniku šesti ořezových rovin definujeme uzavřené těleso v prostoru abstraktních
+
+souřadnic.
+
+• Vše, co je mimo tento objem, se v zobrazení vypustí.
+
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+6 / 13
+CVIČENÍ 6: ZOBRAZENÍ 3D SCÉNY, GEOMETRICKÉ TRANSFORMACE
+
+Moderní počítačová grafika
+
+Ortografická projekce
+•
+
+Z 3D bere v potaz pouze x a y, které beze změny převádí do 2D pohledu,
+souřadnice z se neprojeví.
+• glMatrixMode(GL_PROJECTION);
+• glOrtho(double left, right, bottom, top, near, far);
+• gluOrtho2D(left, right, bottom, top);
+
+Vysoké učení technické v Brně
+
+// (near=-1, far=1)
+
+Fakulta elektrotechniky a komunikačních technologií
+
+7 / 13
+CVIČENÍ 6: ZOBRAZENÍ 3D SCÉNY, GEOMETRICKÉ TRANSFORMACE
+
+Moderní počítačová grafika
+
+Perspektivní projekce
+•
+
+S rostoucí vzdáleností podél osy z se mění měřítko v osách x a y.
+
+•
+
+gluPerspective(double fov, aspect, near, far)
+•
+
+fov – field of view, specifikace zorného úhlu
+
+•
+
+aspect – poměr w / h základny jehlanu
+
+•
+
+near – vzdálenost přední ořezové roviny od pozorovatele
+
+•
+
+far – vzdálenost zadní ořezové roviny od pozorovatele
+
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+8 / 13
+CVIČENÍ 6: ZOBRAZENÍ 3D SCÉNY, GEOMETRICKÉ TRANSFORMACE
+
+Moderní počítačová grafika
+
+Práce s kamerou
+•
+
+glMatrixMode(GL_MODELVIEW)
+
+•
+
+gluLookAt(double eyeX, eyeY, eyeZ, centerX, centerY, centerZ,
+upX, upY, upZ)
+• Kamera se nachází v bodě [ eyeX, eyeY, eyeZ ]
+• Sleduje bod [ centerX, centerY, centerZ ]
+• Je otočená tak, že vektor [ upX, upY, upZ ]
+
+směřuje nahoru
+
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+9 / 13
+CVIČENÍ 6: ZOBRAZENÍ 3D SCÉNY, GEOMETRICKÉ TRANSFORMACE
+
+Moderní počítačová grafika
+
+Úkol 1
+1. Specifikujte ortogonální zobrazení s ořezovými rovinami [ -20, 20, -20, 20, -30, 30 ].
+2. Definujte pohled kamery z bodu [ 4, 4, 16 ] směrem na počátek souřadnic naší
+
+scény.
+
+• gluLookAt()
+
+3. Přepněte zobrazení našeho útvaru na perspektivní s přednastavenými parametry
+
+funkce gluPerspective() a porovnejte výsledky.
+
+onReshape() + onDisplay3D()
+
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+10 / 13
+CVIČENÍ 6: ZOBRAZENÍ 3D SCÉNY, GEOMETRICKÉ TRANSFORMACE
+
+Moderní počítačová grafika
+
+Geometrické transformace
+•
+
+Kartézské souřadnice:
+
+•
+
+Homogenní souřadnice:
+
+•
+
+Převod z kartézských na homogenní:
+
+•
+
+Převod z homogenních na kartézské:
+
+•
+
+Transformace scény odpovídá násobení bodů v
+homogenních souřadnicích čtvercovou maticí
+4×4.
+
+•
+
+Složení transformací odpovídá násobení
+jednotlivých transformačních matic.
+
+𝑥𝑥
+
+𝑦𝑦
+
+𝑧𝑧
+
+𝑥𝑥
+
+𝑦𝑦
+
+𝑧𝑧
+
+𝑥𝑥
+
+𝑦𝑦
+
+𝑥𝑥/𝑤𝑤
+
+𝑧𝑧
+𝑦𝑦/𝑤𝑤
+
+𝑤𝑤
+1
+
+𝑧𝑧/𝑤𝑤
+
+1
+
+𝐓𝐓𝒒𝒒 = 𝐓𝐓1 ⋅ 𝐓𝐓2 ⋅ 𝐓𝐓3 …
+
+𝐓𝐓𝒑𝒑 = 𝐓𝐓2 ⋅ 𝐓𝐓1 ⋅ 𝐓𝐓3 …
+𝐓𝐓𝒒𝒒 ≠ 𝐓𝐓𝒑𝒑
+
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+11 / 13
+CVIČENÍ 6: ZOBRAZENÍ 3D SCÉNY, GEOMETRICKÉ TRANSFORMACE
+
+Moderní počítačová grafika
+
+Transformace scény
+•
+
+V OpenGL existují příkazy, které vytvoří matici příslušné transformace a tou je pak
+vynásobena aktuální matice:
+• Změna měřítka v jednotlivých osách
+• glScalef(float x, y, z)
+
+• Posun
+• glTranslatef(float x, y, z)
+
+• Rotace
+• glRotatef(float angle, xaxis, yaxis, zaxis)
+
+• Ručně definovaná matice transformace
+• glMultMatrixd(double pole[16])
+
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+12 / 13
+CVIČENÍ 6: ZOBRAZENÍ 3D SCÉNY, GEOMETRICKÉ TRANSFORMACE
+
+Moderní počítačová grafika
+
+Úkol 2
+1. Do scény s použitou ortogonální projekcí vykreslete domeček pomocí funkce
+
+vykresliDomecek() a s domečkem proveďte následující operace:
+
+• Translace o 50 bodů v kladném směru osy x a o 50 bodů v kladném směru osy y.
+• Zmenšení měřítka na polovinu ve směru osy x i y.
+• Rotace o 15 stupňů po směru hodinových ručiček dle osy z (vektor [ 0, 0, 1 ]).
+
+2. Bude se hodit…
+•
+
+glOrtho(-double(w)/2, double(w)/2, -double(h)/2, double(h)/2, -1, 1);
+
+Otázky k zamyšlení
+• Co se stane, pokud matici GL_MODELVIEW neinicializujete pomocí glLoadIdentity()?
+• Zůstane výsledek výstupu stejný, když prohodíte jednotlivé transformace?
+
+onReshape() + onDisplay2D()
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+13 / 13
+CVIČENÍ 6: ZOBRAZENÍ 3D SCÉNY, GEOMETRICKÉ TRANSFORMACE
+
+Moderní počítačová grafika
+
+Úkol 3
+1. Implementujte automatickou rotaci domečku podle osy z o 5° za 15 ms.
+2. Opatřete okno s rotujícím domem nápisem „Rotace domu“, který ovšem rotovat
+
+nebude.
+
+• Využijte funkci bitmapText().
+• Použijte font GLUT_BITMAP_HELVETICA_12.
+
+3. Aplikujte obdobnou animaci na 3D objekt ve window 1.
+
+Bonus: změňte směr rotace domečku na opačný bez změny proměnné angle
+
+onDisplay3D() + onDisplay2D() + onTimer()
+Vysoké učení technické v Brně
+
+Fakulta elektrotechniky a komunikačních technologií
+
+
