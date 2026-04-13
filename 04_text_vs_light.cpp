@@ -1,7 +1,8 @@
 // MPC-MPG cviceni 9
 // kombinace texturovani a osvetleni
 #include <stdlib.h>
-#include <GL/glut.h>
+// #include <GL/glut.h>
+#include <GLUT/glut.h>
 #include <iostream>
 #include <string>
 

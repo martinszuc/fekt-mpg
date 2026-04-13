@@ -2,7 +2,9 @@
 #define imageLoad_H
 #include <iostream>
 #include <fstream>
-#include <GL/glut.h>
+// // #include <GL/glut.h>
+#include <GLUT/glut.h>
+#include <GLUT/glut.h>
 #define bgrConversion true
 #include <cstring>
 

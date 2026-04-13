@@ -1,7 +1,8 @@
 // MPC-MPG cviceni 9
 // ukazka blendingu
 #include <stdlib.h>
-#include <GL/glut.h>
+// #include <GL/glut.h>
+#include <GLUT/glut.h>
 #include "math.h"
 
 #define PI		3.141592653589793f

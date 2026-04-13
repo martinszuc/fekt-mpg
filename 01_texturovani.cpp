@@ -2,7 +2,8 @@
 // textura - nahrani vlastni textury, korektni texturovani, parametry
 #include <stdlib.h>
 #include "imageLoad.h"
-#include <GL/glut.h>
+// #include <GL/glut.h>
+#include <GLUT/glut.h>
 #include "math.h"
 
 #define PI 3.141592653589793f
