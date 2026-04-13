@@ -14,7 +14,7 @@ double xold = 0, yold = 0, zold = 0;	// predchozi poloha mysi
 double tranznew = 0;					// aktualni posunuti ve smeru osy z
 double tranzold = 0;					// predchozi posunuti ve smeru osy z
 bool tocime = false;					// ovladac rotace
-bool posouvame = false;					// ovladac translace
+bool posouvame = false;				// ovladac translace
 double newnorm, oldnorm;				// normy polohovych vektoru mysi
 double xaxis = 0, yaxis = 0, zaxis = 0; // osa rotace
 double xaxis2, yaxis2, zaxis2;			// pomocna osa rotace
@@ -49,11 +49,8 @@ void onInit(void)
 		exit((int)0);
 	}
 
-	// glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	// glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, (mipmap) ? GL_LINEAR_MIPMAP_LINEAR : GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, (mipmap) ? GL_LINEAR_MIPMAP_LINEAR : GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 	glEnable(GL_TEXTURE_2D);
@@ -93,15 +90,13 @@ void onDisplay(void)
 	glBindTexture(GL_TEXTURE_2D, textury[0]);
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 
-	// Ukol 1 - doplnte kod
+	// Ukol 1 - texture correctly mapped to square (side 10, z=0)
 	glBegin(GL_QUADS);
 		glTexCoord2f(0.0f, 0.0f); glVertex3f(-5.0f, -5.0f, 0.0f);
 		glTexCoord2f(1.0f, 0.0f); glVertex3f( 5.0f, -5.0f, 0.0f);
 		glTexCoord2f(1.0f, 1.0f); glVertex3f( 5.0f,  5.0f, 0.0f);
 		glTexCoord2f(0.0f, 1.0f); glVertex3f(-5.0f,  5.0f, 0.0f);
 	glEnd();
-
-	// Ukol 2 - doplnte kod
 
 	glFlush();
 	glutSwapBuffers();
@@ -219,7 +214,7 @@ int main(int argc, char **argv)
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 	glutInitWindowPosition(30, 30);
 	glutInitWindowSize(500, 500);
-	glutCreateWindow("Cviceni 9 - Ukol 1, 2 (Textury)");
+	glutCreateWindow("Cviceni 9 - Ukol 1 (Textury)");
 	glutDisplayFunc(onDisplay);
 	glutReshapeFunc(onReshape);
 	glutMouseFunc(onMouseButton);
