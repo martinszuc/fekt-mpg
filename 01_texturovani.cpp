@@ -101,7 +101,14 @@ void onDisplay(void)
 		glTexCoord2f(0.0f, 1.0f); glVertex3f(-5.0f,  5.0f, 0.0f);
 	glEnd();
 
-	// Ukol 2 - doplnte kod
+	// Ukol 2 - incorrect mapping: UV corners don't align with quad corners
+	glTranslatef(12.0f, 0.0f, 0.0f);
+	glBegin(GL_QUADS);
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(-5.0f, -5.0f, 0.0f);
+		glTexCoord2f(0.5f, 0.0f); glVertex3f( 5.0f, -5.0f, 0.0f);
+		glTexCoord2f(1.0f, 0.5f); glVertex3f( 5.0f,  5.0f, 0.0f);
+		glTexCoord2f(0.5f, 1.0f); glVertex3f(-5.0f,  5.0f, 0.0f);
+	glEnd();
 
 	glFlush();
 	glutSwapBuffers();
