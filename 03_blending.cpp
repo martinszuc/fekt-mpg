@@ -85,7 +85,10 @@ void onDisplay(void)
 	glEnd();
 
 	// Ukol 4 - doplnte kod
-	
+	// disable depth writes so transparent faces don't occlude each other
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glDepthMask(GL_FALSE);
 
 	// pruhledna stena
 	glBegin(GL_QUADS);
@@ -101,7 +104,8 @@ void onDisplay(void)
 	glEnd();
 
 	//// Ukol 4 - doplnte kod
-
+	glDepthMask(GL_TRUE);
+	glDisable(GL_BLEND);
 
 	glFlush();
 	glutSwapBuffers();
