@@ -93,21 +93,22 @@ void onDisplay(void)
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 
 	// Ukol 3 - upravte kod
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, (mipmap) ? GL_LINEAR_MIPMAP_LINEAR : GL_LINEAR);
+	// MAG filter never uses mipmap levels, only MIN can use them
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, (mipmap) ? GL_LINEAR_MIPMAP_LINEAR : GL_LINEAR);
 
-	// nastaveni opakovani
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); // GL_REPEAT, 0x8370 - mirrored
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	// UV range > 1 makes the repeat/clamp effect visible
+	// GL_CLAMP_TO_EDGE stretches the edge color instead of repeating
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
-	// vykresleni sachovnice
+	// vykresleni sachovnice s rozsahem 4x pro viditelny efekt
 	glBegin(GL_QUADS);
 	glTexCoord2f(0.0, 0.0); glVertex3i(-50, 0, -50);
-	glTexCoord2f(0.0, 1.0); glVertex3i(-50, 0, 50);
-	glTexCoord2f(1.0, 1.0); glVertex3i(50, 0, 50);
-	glTexCoord2f(1.0, 0.0); glVertex3i(50, 0, -50);
+	glTexCoord2f(0.0, 4.0); glVertex3i(-50, 0, 50);
+	glTexCoord2f(4.0, 4.0); glVertex3i(50, 0, 50);
+	glTexCoord2f(4.0, 0.0); glVertex3i(50, 0, -50);
 	glEnd();
-	//
 
 	glFlush();
 	glutSwapBuffers();
