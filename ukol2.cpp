@@ -1,7 +1,7 @@
 // MPC-MPG cviceni 10 - Blender
 #include "OBJ_Loader.h"
 #include "imageLoad.h"
-#include <GL\glut.h>
+#include <GL/glut.h>
 #define PI 3.141592653589793f
 
 objl::Loader Objekt;
@@ -106,9 +106,17 @@ void onDisplay(void)
 		{
 			objl::Mesh curMesh = Objekt.LoadedMeshes[i];
 			int meshsize = curMesh.Vertices.size();
-			// Ukol 2 
+			// Ukol 2
 			// Pomoci cyklu doplnte vykresleni objektu s spravnym texturovanim a osvetlenim
-			
+			glBegin(GL_TRIANGLES);
+			for (int j = 0; j < meshsize; j++) {
+				objl::Vertex v = curMesh.Vertices[j];
+				glNormal3f(v.Normal.X, v.Normal.Y, v.Normal.Z);
+				glTexCoord2f(v.TextureCoordinate.X, v.TextureCoordinate.Y);
+				glVertex3f(v.Position.X, v.Position.Y, v.Position.Z);
+			}
+			glEnd();
+
 		}
 	}
 
