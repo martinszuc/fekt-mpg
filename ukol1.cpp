@@ -70,12 +70,22 @@ void onInit(void)
 	glDisable(GL_CULL_FACE);
 
 	// Ukol 1 - doplnte nastaveni materialu
+	glMaterialfv(GL_FRONT, GL_AMBIENT, materialAmbient);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, materialDiffuse);
+	glMaterialfv(GL_FRONT, GL_SPECULAR, materialSpecular);
+	glMaterialf(GL_FRONT, GL_SHININESS, materialShininess);
 
 	// Ukol 1 - doplnte nastaveni svetla
 	// nastaveni hodnot ambient, diffuse, specular a position na prednastavene hodnoty pro svetlo c. 0 (GL_LIGHT0)
+	glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
+	glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmbient);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDiffuse);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, lightSpecular);
 
 	// Ukol 1
 	// zapnuti svetla c. 0 a zapnuti osvetleni (GL_LIGHTIING)
+	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHTING);
 
 	InitTexture(); // vytvoreni textury sachovnice v bufferu texture[]
 
@@ -135,8 +145,28 @@ void onDisplay(void)
 	gluQuadricTexture(quadric, GLU_TRUE);
 
 	// Ukol 1 - vytvorte kouli, nastavte barvu na cervenou a aplikujte translaci
+	glPushMatrix();
+	glTranslatef(-15.0f, 0.0f, 0.0f);
+	glBindTexture(GL_TEXTURE_2D, textury[0]);
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	gluSphere(quadric, 5.0, 32, 32);
+	glPopMatrix();
 
 	// Ukol 1 pokracovani - vytvorte objekty, doplnte aplikace textur a nastaveni interakce textury s prostredim (glTexEnvi)
+	glPushMatrix();
+	glTranslatef(0.0f, 5.0f, 0.0f);
+	glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
+	glBindTexture(GL_TEXTURE_2D, textury[1]);
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	gluDisk(quadric, 5.0, 7.0, 32, 4);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(15.0f, 0.0f, 0.0f);
+	glBindTexture(GL_TEXTURE_2D, textury[0]);
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	gluCylinder(quadric, 6.0, 6.0, 10.0, 32, 8);
+	glPopMatrix();
 
 	gluDeleteQuadric(quadric);
 
