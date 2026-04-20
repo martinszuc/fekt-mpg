@@ -1,6 +1,6 @@
 // MPC-MPG cviceni 10 - kvadriky
 #include <stdlib.h>
-#include <GL/glut.h>
+#include <GLUT/glut.h>
 #include "imageLoad.h"
 
 #define TEXTURE_WIDTH 64
