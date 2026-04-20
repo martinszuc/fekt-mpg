@@ -56,3 +56,11 @@ Texture loading, mipmaps, alpha blending, and text vs. lighting in OpenGL (`01_t
 <p align="center">
 <img src="screenshots/cv9/ukol4.gif" alt="Úkol 4 — text vs light" width="300"/> <img src="screenshots/cv9/ukol5.png" alt="Úkol 5" width="300"/>
 </p>
+
+---
+
+## [CV10](tree/cv10) — Advanced 3D Objects: GLU Quadrics & OBJ Loader
+
+GLU quadric objects (sphere, disk, cylinder) with Phong lighting and textures. OBJ model exported from Blender, loaded and rendered with normals and UV textures.
+
+<img src="screenshots/cv10/ukol1.png" alt="Ukol 1 — quadrics" width="400"/> <img src="screenshots/cv10/ukol2.gif" alt="Ukol 2 — OBJ tyre" width="400"/>
