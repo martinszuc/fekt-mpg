@@ -46,13 +46,13 @@ Two-window app: 3D cube with perspective and camera, 2D house with transforms, t
 
 ---
 
-## [CV10](tree/cv10) — Texturing, mipmaps, blending, lighting
+## [CV9](tree/cv9) — Texturing, mipmaps, blending, lighting
 
 Texture loading, mipmaps, alpha blending, and text vs. lighting in OpenGL (`01_texturovani` … `04_text_vs_light`).
 
 <p align="center">
-<img src="screenshots/cv10/ukol1.gif" alt="Úkol 1 — texturování" width="300"/> <img src="screenshots/cv10/ukol3.gif" alt="Úkol 3 — blending" width="300"/>
+<img src="screenshots/cv9/ukol1.gif" alt="Úkol 1 — texturování" width="300"/> <img src="screenshots/cv9/ukol3.gif" alt="Úkol 3 — blending" width="300"/>
 </p>
 <p align="center">
-<img src="screenshots/cv10/ukol4.gif" alt="Úkol 4 — text vs light" width="300"/> <img src="screenshots/cv10/ukol5.png" alt="Úkol 5" width="300"/>
+<img src="screenshots/cv9/ukol4.gif" alt="Úkol 4 — text vs light" width="300"/> <img src="screenshots/cv9/ukol5.png" alt="Úkol 5" width="300"/>
 </p>
