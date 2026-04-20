@@ -1,7 +1,7 @@
 // MPC-MPG cviceni 10 - Blender
 #include "OBJ_Loader.h"
 #include "imageLoad.h"
-#include <GL/glut.h>
+#include <GLUT/glut.h>
 #define PI 3.141592653589793f
 
 objl::Loader Objekt;
