@@ -7,6 +7,7 @@
 #include <cmath>
 
 float angle = 0.0;
+float timeElapsed = 0.0f;
 int width, height;
 float aspectRatio;
 bool timerOn = false;
@@ -18,7 +19,7 @@ GLfloat mvp[16];
 #define MENU_TIMEROFF 1005
 
 GLuint points_vbo, colors_vbo, uv_vbo, vertex_shader, fragment_shader, program;
-GLuint mvp_location, vp_location, texture0_location, texture1_location;
+GLuint mvp_location, vp_location, texture0_location, texture1_location, time_location;
 GLuint textury[2];
 
 // souradnice bodu
@@ -45,6 +46,7 @@ float uv[] = {
 static const char* vertex_shader_text =
 "#version 410\n"
 "uniform mat4 MVP;"
+"uniform float time;"
 "layout(location = 0) in vec2 vertex_position;"
 "layout(location = 1) in vec3 vertex_color;"
 "layout(location = 2) in vec2 vertex_uv;"
@@ -53,7 +55,12 @@ static const char* vertex_shader_text =
 "void main()"
 "{"
 "    gl_Position = MVP * vec4(vertex_position, 0.0, 1.0);"
-"    color = vertex_color;"
+"    float t = time * 0.6;"
+"    color = vec3("
+"        0.5 + 0.5 * sin(t + vertex_color.r * 3.14159),"
+"        0.5 + 0.5 * sin(t + 2.094 + vertex_color.g * 3.14159),"
+"        0.5 + 0.5 * sin(t + 4.189 + vertex_color.b * 3.14159)"
+"    );"
 "    uv = vertex_uv;"
 "}";
 
@@ -62,6 +69,7 @@ static const char* fragment_shader_text =
 "uniform vec2 viewportDimensions;"
 "uniform sampler2D texture0;"
 "uniform sampler2D texture1;"
+"uniform float time;"
 "in vec3 color;"
 "in vec2 uv;"
 "out vec4 FragColor;"
@@ -69,10 +77,20 @@ static const char* fragment_shader_text =
 "{"
 "    vec4 tex0 = texture(texture0, uv);"
 "    vec4 tex1 = texture(texture1, uv);"
-"    vec4 baseColor = tex0 * tex1 * vec4(color, 1.0);"
-"    float factor = 2.0 * (gl_FragCoord.x * gl_FragCoord.x)"
-"                       / (viewportDimensions.x * viewportDimensions.x);"
-"    FragColor = baseColor * factor;"
+"    vec4 base = tex0 * tex1 * vec4(color, 1.0);"
+"    vec2 fc = gl_FragCoord.xy;"
+"    vec2 center = viewportDimensions * 0.5;"
+"    float r = min(viewportDimensions.x, viewportDimensions.y) * 0.26;"
+"    vec2 l1 = center + vec2(cos(time * 1.3) * r, sin(time * 1.1) * r);"
+"    vec2 l2 = center + vec2(cos(time * 1.3 + 3.14159) * r * 0.75, sin(time * 1.7) * r * 0.85);"
+"    float spot1 = pow(max(0.0, 1.0 - length(fc - l1) / 120.0), 2.0);"
+"    float spot2 = pow(max(0.0, 1.0 - length(fc - l2) / 95.0),  2.0);"
+"    vec3 col1 = vec3(0.5+0.5*sin(time*0.7), 0.5+0.5*sin(time*0.7+2.094), 0.5+0.5*sin(time*0.7+4.189));"
+"    vec3 col2 = vec3(0.5+0.5*sin(time*0.5+3.14), 0.5+0.5*sin(time*0.5+5.24), 0.5+0.5*sin(time*0.5+1.05));"
+"    float posFactor = 2.0 * (fc.x * fc.x) / (viewportDimensions.x * viewportDimensions.x);"
+"    vec3 ambient = base.rgb * 0.08;"
+"    vec3 lit = base.rgb * (spot1 * col1 * 3.2 + spot2 * col2 * 2.8);"
+"    FragColor = vec4((ambient + lit) * posFactor, 1.0);"
 "}";
 
 void onReshape(int w, int h)
@@ -96,7 +114,7 @@ void onInit()
 	}
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 
 	if (!setTexture("grass.bmp", &textury[1], true)) {
@@ -105,7 +123,7 @@ void onInit()
 	}
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 
 	// vytvoreni VBO pro souradnice vertexu
@@ -168,6 +186,7 @@ void onInit()
 	// ulozeni umisteni textur, abychom jich mohli pouzivat vic naraz
 	texture0_location = glGetUniformLocation(program, "texture0");
 	texture1_location = glGetUniformLocation(program, "texture1");
+	time_location = glGetUniformLocation(program, "time");
 }
 
 void onDisplay(void)
@@ -193,6 +212,7 @@ void onDisplay(void)
 	glUniform2f(vp_location, (float)width, (float)height);
 	glUniform1i(texture0_location, 0);
 	glUniform1i(texture1_location, 1);
+	glUniform1f(time_location, timeElapsed);
 
 	// propojeni textur
 	glActiveTexture(GL_TEXTURE0 + 0); // texturovaci jednotka 0
@@ -211,6 +231,7 @@ void onDisplay(void)
 void onTimer(int value)
 {
 	angle += 1;
+	timeElapsed += 0.01f;
 	glutPostRedisplay();
 	if (timerOn)
 	{
