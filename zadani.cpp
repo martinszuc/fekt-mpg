@@ -173,6 +173,7 @@ void onDisplay(void)
 	// prepocet rotace podle casovace
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+	glRotatef(angle, 0.0, 0.0, 1.0);
 
 	// prepocet ortogonalni projekce
 	glOrtho(-aspectRatio, aspectRatio, -1, 1, -1, 1);
