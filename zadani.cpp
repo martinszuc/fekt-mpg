@@ -83,13 +83,13 @@ static const char* fragment_shader_text =
 "    float r = min(viewportDimensions.x, viewportDimensions.y) * 0.26;"
 "    vec2 l1 = center + vec2(cos(time * 1.3) * r, sin(time * 1.1) * r);"
 "    vec2 l2 = center + vec2(cos(time * 1.3 + 3.14159) * r * 0.75, sin(time * 1.7) * r * 0.85);"
-"    float spot1 = pow(max(0.0, 1.0 - length(fc - l1) / 120.0), 2.0);"
-"    float spot2 = pow(max(0.0, 1.0 - length(fc - l2) / 95.0),  2.0);"
+"    float spot1 = pow(max(0.0, 1.0 - length(fc - l1) / 160.0), 2.0);"
+"    float spot2 = pow(max(0.0, 1.0 - length(fc - l2) / 130.0), 2.0);"
 "    vec3 col1 = vec3(0.5+0.5*sin(time*0.7), 0.5+0.5*sin(time*0.7+2.094), 0.5+0.5*sin(time*0.7+4.189));"
 "    vec3 col2 = vec3(0.5+0.5*sin(time*0.5+3.14), 0.5+0.5*sin(time*0.5+5.24), 0.5+0.5*sin(time*0.5+1.05));"
-"    float posFactor = 2.0 * (fc.x * fc.x) / (viewportDimensions.x * viewportDimensions.x);"
-"    vec3 ambient = base.rgb * 0.08;"
-"    vec3 lit = base.rgb * (spot1 * col1 * 3.2 + spot2 * col2 * 2.8);"
+"    float posFactor = 0.4 + 1.6 * (fc.x / viewportDimensions.x);"
+"    vec3 ambient = base.rgb * 0.35;"
+"    vec3 lit = base.rgb * (spot1 * col1 * 3.5 + spot2 * col2 * 3.0);"
 "    FragColor = vec4((ambient + lit) * posFactor, 1.0);"
 "}";
 
