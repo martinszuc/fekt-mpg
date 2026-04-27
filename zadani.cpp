@@ -51,6 +51,9 @@ static const char* vertex_shader_text =
 "out vec2 uv;"
 "void main()"
 "{"
+"    gl_Position = MVP * vec4(vertex_position, 0.0, 1.0);"
+"    color = vertex_color;"
+"    uv = vertex_uv;"
 "}";
 
 static const char* fragment_shader_text =
@@ -63,6 +66,7 @@ static const char* fragment_shader_text =
 "out vec4 FragColor;"
 "void main()"
 "{"
+"    FragColor = vec4(color, 1.0);"
 "}";
 
 void onReshape(int w, int h)
