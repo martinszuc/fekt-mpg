@@ -18,3 +18,10 @@ foreach(SOURCE ${CPP_SOURCES})
     add_executable(${EXEC_NAME} ${SOURCE})
     target_link_libraries(${EXEC_NAME} OpenGL::GL ${GLUT_LIBRARY} GLEW::GLEW)
 endforeach()
+
+# Copy all BMP/OBJ/MTL assets to build directory so executables find them at runtime
+file(GLOB ASSETS "${CMAKE_SOURCE_DIR}/*.bmp" "${CMAKE_SOURCE_DIR}/*.obj" "${CMAKE_SOURCE_DIR}/*.mtl")
+foreach(ASSET ${ASSETS})
+    get_filename_component(ASSET_NAME ${ASSET} NAME)
+    configure_file(${ASSET} ${CMAKE_BINARY_DIR}/${ASSET_NAME} COPYONLY)
+endforeach()
