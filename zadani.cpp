@@ -66,7 +66,9 @@ static const char* fragment_shader_text =
 "out vec4 FragColor;"
 "void main()"
 "{"
-"    FragColor = vec4(color, 1.0);"
+"    vec4 tex0 = texture(texture0, uv);"
+"    vec4 tex1 = texture(texture1, uv);"
+"    FragColor = tex0 * tex1 * vec4(color, 1.0);"
 "}";
 
 void onReshape(int w, int h)
