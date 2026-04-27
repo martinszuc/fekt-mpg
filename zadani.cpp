@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <iostream>
+#include <cmath>
 
 float angle = 0.0;
 int width, height;
@@ -176,16 +177,15 @@ void onDisplay(void)
 	glClearDepth(1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	// prepocet rotace podle casovace
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	glRotatef(angle, 0.0, 0.0, 1.0);
-
-	// prepocet ortogonalni projekce
-	glOrtho(-aspectRatio, aspectRatio, -1, 1, -1, 1);
-
-	// ulozeni transformaci do matice mvp, aby je slo predat do vertex shaderu
-	glGetFloatv(GL_MODELVIEW_MATRIX, mvp);
+	// sestaveni MVP matice rucne (legacy glMatrixMode/glOrtho nefunguji v core profilu)
+	// MVP = Rotate(Z, angle) * Ortho(-r, r, -1, 1, -1, 1), column-major
+	float a = angle * (float)M_PI / 180.0f;
+	float c = cosf(a), s = sinf(a);
+	float r = aspectRatio;
+	mvp[0]=c/r;  mvp[4]=-s;   mvp[8]=0;   mvp[12]=0;
+	mvp[1]=s/r;  mvp[5]=c;    mvp[9]=0;   mvp[13]=0;
+	mvp[2]=0;    mvp[6]=0;    mvp[10]=-1; mvp[14]=0;
+	mvp[3]=0;    mvp[7]=0;    mvp[11]=0;  mvp[15]=1;
 
 	// aplikovani obou shaderu (vertex, fragment) svazanych v programu
 	glUseProgram(program);
