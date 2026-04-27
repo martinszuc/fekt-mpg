@@ -64,3 +64,11 @@ Texture loading, mipmaps, alpha blending, and text vs. lighting in OpenGL (`01_t
 GLU quadric objects (sphere, disk, cylinder) with Phong lighting and textures. OBJ model exported from Blender, loaded and rendered with normals and UV textures.
 
 <img src="screenshots/cv10/ukol1.png" alt="Ukol 1 — quadrics" width="400"/> <img src="screenshots/cv10/ukol2.gif" alt="Ukol 2 — OBJ tyre" width="400"/>
+
+---
+
+## [CV11](tree/cv11) — OpenGL Shaders (GLSL)
+
+Programmable pipeline with VBOs, VAOs, vertex and fragment shaders. Colored triangle via GLSL, MVP rotation, texture blending (brick × grass × vertex color), and fragment position-based color recalculation from `gl_FragCoord`.
+
+<img src="screenshots/cv11/ukol1.png" alt="Ukol 1 — colored triangle" width="400"/> <img src="screenshots/cv11/ukol4.gif" alt="Ukol 4 — rotating textured triangle" width="400"/>
