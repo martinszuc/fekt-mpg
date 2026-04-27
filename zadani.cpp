@@ -68,7 +68,10 @@ static const char* fragment_shader_text =
 "{"
 "    vec4 tex0 = texture(texture0, uv);"
 "    vec4 tex1 = texture(texture1, uv);"
-"    FragColor = tex0 * tex1 * vec4(color, 1.0);"
+"    vec4 baseColor = tex0 * tex1 * vec4(color, 1.0);"
+"    float factor = 2.0 * (gl_FragCoord.x * gl_FragCoord.x)"
+"                       / (viewportDimensions.x * viewportDimensions.x);"
+"    FragColor = baseColor * factor;"
 "}";
 
 void onReshape(int w, int h)
