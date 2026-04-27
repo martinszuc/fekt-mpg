@@ -71,4 +71,4 @@ GLU quadric objects (sphere, disk, cylinder) with Phong lighting and textures. O
 
 Programmable pipeline with VBOs, VAOs, vertex and fragment shaders. Colored triangle via GLSL, MVP rotation, texture blending (brick × grass × vertex color), and fragment position-based color recalculation from `gl_FragCoord`.
 
-<img src="screenshots/cv11/screen1.png" alt="Ukol 1 — colored triangle" width="400"/> <img src="screenshots/cv11/cv11.gif" alt="Ukol 4 — rotating textured triangle" width="400"/>
+<img src="screenshots/cv11/screen1.png" alt="Ukol 1 — colored triangle" width="300"/> <img src="screenshots/cv11/cv11.gif" alt="Ukol 4 — rotating textured triangle" width="300"/>
