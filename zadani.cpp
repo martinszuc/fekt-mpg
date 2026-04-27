@@ -42,7 +42,7 @@ float uv[] = {
 };
 
 static const char* vertex_shader_text =
-"#version 460\n"
+"#version 410\n"
 "uniform mat4 MVP;"
 "layout(location = 0) in vec2 vertex_position;"
 "layout(location = 1) in vec3 vertex_color;"
@@ -57,7 +57,7 @@ static const char* vertex_shader_text =
 "}";
 
 static const char* fragment_shader_text =
-"#version 460\n"
+"#version 410\n"
 "uniform vec2 viewportDimensions;"
 "uniform sampler2D texture0;"
 "uniform sampler2D texture1;"
@@ -85,6 +85,7 @@ void onReshape(int w, int h)
 void onInit()
 {
 	std::cout << glGetString(GL_VERSION) << "\n";
+	glewExperimental = GL_TRUE;
 	glewInit();
 
 	// nacteni textury
@@ -241,7 +242,7 @@ void onMenu(int value)
 int main(int argc, char* argv[])
 {
 	glutInit(&argc, argv);              // inicializace knihovny GLUT
-	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH); // init double buffer
+	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH | GLUT_3_2_CORE_PROFILE); // request OpenGL 3.2+ core profile
 
 	glutInitWindowSize(600, 600);       // nastaveni pocatecni velikosti dale oteviranych oken
 	glutInitWindowPosition(200, 100);   // nastaveni pocatecniho umisteni dale oteviranych oken
