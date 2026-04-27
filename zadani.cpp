@@ -1,4 +1,4 @@
-#include <GLUT/glew.h>
+#include <GL/glew.h>
 #include <GLUT/glut.h>
 #include "imageLoad.h"
 #include <stdlib.h>
@@ -7,7 +7,7 @@
 
 float angle = 0.0;
 int width, height;
-float ratio;
+float aspectRatio;
 bool timerOn = false;
 GLfloat mvp[16];
 
@@ -70,7 +70,7 @@ void onReshape(int w, int h)
 	glViewport(0, 0, w, h);
 	width = w;
 	height = h;
-	ratio = width / (float)height;
+	aspectRatio = width / (float)height;
 }
 
 void onInit()
@@ -171,7 +171,7 @@ void onDisplay(void)
 	glLoadIdentity();
 
 	// prepocet ortogonalni projekce
-	glOrtho(-ratio, ratio, -1, 1, -1, 1);
+	glOrtho(-aspectRatio, aspectRatio, -1, 1, -1, 1);
 
 	// ulozeni transformaci do matice mvp, aby je slo predat do vertex shaderu
 	glGetFloatv(GL_MODELVIEW_MATRIX, mvp);
