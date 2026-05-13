@@ -11,10 +11,14 @@
             "id": "43a68eea281b32b9",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "Zkouška/Elektronická-část.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Elektronická-část"
             }
           }
         ]
@@ -90,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Zkouška/Elektronická-část.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for Elektronická-část"
             }
           },
           {
@@ -108,11 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Zkouška/Elektronická-část.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links"
+              "title": "Outgoing links from Elektronická-část"
             }
           },
           {
@@ -150,12 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Zkouška/Elektronická-část.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of Elektronická-část"
             }
           }
         ]
@@ -176,8 +183,9 @@
       "bases:Create new base": false
     }
   },
-  "active": "a5761f44030669bb",
+  "active": "43a68eea281b32b9",
   "lastOpenFiles": [
+    "HOME.md",
     "Zkouška/Písemná-část.md",
     "Zkouška/Elektronická-část.md",
     "Zkouška",
@@ -195,7 +203,6 @@
     "Otázky",
     "Matematika/Klíčové-vzorce.md",
     "Matematika",
-    "HOME.md",
     "Flashcards/Rychlé-fakty.md",
     "Flashcards",
     "{Témata,Zkouška,Matematika,Otázky,Flashcards,.obsidian}"
