@@ -11,10 +11,10 @@
             "id": "43a68eea281b32b9",
             "type": "leaf",
             "state": {
-              "type": "empty",
+              "type": "graph",
               "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ]
@@ -176,6 +176,28 @@
       "bases:Create new base": false
     }
   },
-  "active": "43a68eea281b32b9",
-  "lastOpenFiles": []
+  "active": "a5761f44030669bb",
+  "lastOpenFiles": [
+    "Zkouška/Písemná-část.md",
+    "Zkouška/Elektronická-část.md",
+    "Zkouška",
+    "Témata/09-10-Paralelní-GPU.md",
+    "Témata/08-Textury.md",
+    "Témata/07-Promítání-a-osvětlování.md",
+    "Témata/06-3D-Pláty-transformace.md",
+    "Témata/05-Rasterizace.md",
+    "Témata/02-Barva-a-barevné-modely.md",
+    "Témata/04-2D-křivky-Bézier.md",
+    "Témata/03-Obraz-jako-signál.md",
+    "Témata/01-Vykreslovací-řetězec.md",
+    "Témata",
+    "Otázky/Kontrolní-otázky.md",
+    "Otázky",
+    "Matematika/Klíčové-vzorce.md",
+    "Matematika",
+    "HOME.md",
+    "Flashcards/Rychlé-fakty.md",
+    "Flashcards",
+    "{Témata,Zkouška,Matematika,Otázky,Flashcards,.obsidian}"
+  ]
 }
