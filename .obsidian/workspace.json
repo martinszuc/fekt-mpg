@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Zkouška/Elektronická-část.md",
+                "file": "Témata/02-Barva-a-barevné-modely.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Elektronická-část"
+              "title": "02-Barva-a-barevné-modely"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Zkouška/Elektronická-část.md",
+                "file": "Témata/02-Barva-a-barevné-modely.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Elektronická-část"
+              "title": "Backlinks for 02-Barva-a-barevné-modely"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Zkouška/Elektronická-část.md",
+                "file": "Témata/02-Barva-a-barevné-modely.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Elektronická-část"
+              "title": "Outgoing links from 02-Barva-a-barevné-modely"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Zkouška/Elektronická-část.md",
+                "file": "Témata/02-Barva-a-barevné-modely.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Elektronická-část"
+              "title": "Outline of 02-Barva-a-barevné-modely"
             }
           }
         ]
@@ -185,17 +185,24 @@
   },
   "active": "43a68eea281b32b9",
   "lastOpenFiles": [
-    "HOME.md",
-    "Zkouška/Písemná-část.md",
+    "assets/rgb-cube.png",
+    "rgb-cube.png",
+    "assets",
+    "Pasted image 20260513232332.png",
+    "Témata/02-Barva-a-barevné-modely.md",
+    "Témata/04-2D-křivky-Bézier.md",
     "Zkouška/Elektronická-část.md",
+    "Zkouška/mpg_questions.json",
+    "Zkouška/Písemná-část.md",
+    "HOME.md",
+    "README.md",
+    "mpg_questions.json",
     "Zkouška",
     "Témata/09-10-Paralelní-GPU.md",
     "Témata/08-Textury.md",
     "Témata/07-Promítání-a-osvětlování.md",
     "Témata/06-3D-Pláty-transformace.md",
     "Témata/05-Rasterizace.md",
-    "Témata/02-Barva-a-barevné-modely.md",
-    "Témata/04-2D-křivky-Bézier.md",
     "Témata/03-Obraz-jako-signál.md",
     "Témata/01-Vykreslovací-řetězec.md",
     "Témata",

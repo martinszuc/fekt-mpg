@@ -38,6 +38,7 @@ Lidská sítnice obsahuje dva druhy fotoreceptorů:
 
 **→ MCQ: R + G = Žlutá (a)**
 
+![[rgb-cube.png]]
 ### CMY / CMYK (subtraktivní — tisk)
 - Doplněk RGB: C = 1-R, M = 1-G, Y = 1-B
 - K (Key/Black) přidán pro kvalitnější černou a úsporu inkoustu
