@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 450" width="500" height="450" font-family="sans-serif" font-size="14">
+  <!-- Title -->
+  <text x="250" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">Barycentrické souřadnice</text>
+
+  <g transform="translate(80, 50)">
+    <!-- Triangle vertices: A=(0,0)→(30,320), B=(4,0)→(350,320), C=(0,3)→(30,80) -->
+
+    <!-- Sub-triangle PBC (alpha) - light red -->
+    <polygon points="110,240 350,320 30,80" fill="#ffcdd2" fill-opacity="0.6" stroke="none"/>
+    <!-- Sub-triangle APC (beta) - light green -->
+    <polygon points="30,320 110,240 30,80" fill="#c8e6c9" fill-opacity="0.6" stroke="none"/>
+    <!-- Sub-triangle ABP (gamma) - light blue -->
+    <polygon points="30,320 350,320 110,240" fill="#bbdefb" fill-opacity="0.6" stroke="none"/>
+
+    <!-- Main triangle -->
+    <polygon points="30,320 350,320 30,80" fill="none" stroke="#333" stroke-width="2"/>
+
+    <!-- Dashed lines from P to vertices -->
+    <line x1="110" y1="240" x2="30" y2="320" stroke="#666" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="110" y1="240" x2="350" y2="320" stroke="#666" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="110" y1="240" x2="30" y2="80" stroke="#666" stroke-width="1" stroke-dasharray="4,4"/>
+
+    <!-- Vertex labels -->
+    <text x="20" y="342" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">A</text>
+    <text x="365" y="335" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">B</text>
+    <text x="20" y="72" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">C</text>
+
+    <!-- Vertex coordinates -->
+    <text x="30" y="358" text-anchor="middle" font-size="11" fill="#666">(0, 0)</text>
+    <text x="350" y="350" text-anchor="middle" font-size="11" fill="#666">(4, 0)</text>
+    <text x="30" y="65" text-anchor="middle" font-size="11" fill="#666">(0, 3)</text>
+
+    <!-- Point P -->
+    <circle cx="110" cy="240" r="5" fill="#e53935"/>
+    <text x="122" y="232" font-size="13" font-weight="bold" fill="#e53935">P (1, 1)</text>
+
+    <!-- Area labels -->
+    <text x="180" y="195" text-anchor="middle" font-size="13" fill="#c62828" font-weight="bold">S(PBC)</text>
+    <text x="180" y="212" text-anchor="middle" font-size="11" fill="#c62828">α = 5/12</text>
+
+    <text x="50" y="210" text-anchor="middle" font-size="13" fill="#2e7d32" font-weight="bold">S(APC)</text>
+    <text x="50" y="227" text-anchor="middle" font-size="11" fill="#2e7d32">β = 1/4</text>
+
+    <text x="150" y="300" text-anchor="middle" font-size="13" fill="#1565c0" font-weight="bold">S(ABP)</text>
+    <text x="150" y="317" text-anchor="middle" font-size="11" fill="#1565c0">γ = 1/3</text>
+  </g>
+
+  <!-- Formula -->
+  <text x="250" y="420" text-anchor="middle" font-size="14" fill="#333" font-weight="bold">P = α·A + β·B + γ·C,    α + β + γ = 1</text>
+  <text x="250" y="440" text-anchor="middle" font-size="12" fill="#666">α, β, γ ≥ 0 → bod P leží uvnitř trojúhelníku</text>
+</svg>

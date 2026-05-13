@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" width="800" height="250" font-family="sans-serif" font-size="14">
+  <defs>
+    <!-- Ambient: uniform dark fill -->
+    <radialGradient id="ambient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#5a3a2a"/>
+      <stop offset="100%" stop-color="#3d2518"/>
+    </radialGradient>
+
+    <!-- Diffuse: light from upper-left, Lambertian -->
+    <radialGradient id="diffuse" cx="35%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#d4764e"/>
+      <stop offset="50%" stop-color="#a0522d"/>
+      <stop offset="100%" stop-color="#2a1508"/>
+    </radialGradient>
+
+    <!-- Specular: tight bright spot -->
+    <radialGradient id="specular" cx="38%" cy="35%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="15%" stop-color="#dddddd"/>
+      <stop offset="35%" stop-color="#222222"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </radialGradient>
+
+    <!-- Result: combination -->
+    <radialGradient id="result" cx="38%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="8%" stop-color="#f0c8a0"/>
+      <stop offset="30%" stop-color="#c8734a"/>
+      <stop offset="60%" stop-color="#8a4422"/>
+      <stop offset="100%" stop-color="#3d2518"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="250" fill="#fafafa" rx="8"/>
+
+  <!-- Sphere 1: Ambient -->
+  <circle cx="100" cy="110" r="65" fill="url(#ambient)"/>
+  <text x="100" y="200" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">Ambientni</text>
+  <text x="100" y="218" text-anchor="middle" font-size="11" fill="#888">La = cd . Ia</text>
+  <text x="100" y="235" text-anchor="middle" font-size="11" fill="#888" font-style="italic">Zakladni zar ve stinu</text>
+
+  <!-- Plus sign -->
+  <text x="190" y="118" text-anchor="middle" font-size="30" font-weight="bold" fill="#666">+</text>
+
+  <!-- Sphere 2: Diffuse -->
+  <circle cx="280" cy="110" r="65" fill="url(#diffuse)"/>
+  <text x="280" y="200" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">Difuzni</text>
+  <text x="280" y="218" text-anchor="middle" font-size="11" fill="#888">Ld = cd . I . cos theta</text>
+  <text x="280" y="235" text-anchor="middle" font-size="11" fill="#888" font-style="italic">Matny povrch</text>
+
+  <!-- Plus sign -->
+  <text x="370" y="118" text-anchor="middle" font-size="30" font-weight="bold" fill="#666">+</text>
+
+  <!-- Sphere 3: Specular -->
+  <circle cx="460" cy="110" r="65" fill="url(#specular)"/>
+  <text x="460" y="200" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">Spekularni</text>
+  <text x="460" y="218" text-anchor="middle" font-size="11" fill="#888">Ls = cs . I . cos^p alpha</text>
+  <text x="460" y="235" text-anchor="middle" font-size="11" fill="#888" font-style="italic">Leskly odlesk</text>
+
+  <!-- Equals sign -->
+  <text x="550" y="118" text-anchor="middle" font-size="30" font-weight="bold" fill="#666">=</text>
+
+  <!-- Sphere 4: Result -->
+  <circle cx="640" cy="110" r="65" fill="url(#result)"/>
+  <rect x="633" y="38" width="14" height="14" fill="none" stroke="#fff" stroke-width="1" opacity="0.5" rx="2"/>
+  <text x="640" y="200" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">Vysledek</text>
+  <text x="640" y="218" text-anchor="middle" font-size="11" fill="#888">L = La + Ld + Ls</text>
+  <text x="640" y="235" text-anchor="middle" font-size="11" fill="#888" font-style="italic">Realisticky vzhled</text>
+
+  <!-- Title -->
+  <text x="400" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">Slozky Phongova osvetlovaciho modelu</text>
+</svg>

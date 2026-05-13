@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 550" width="600" height="550" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="cylBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#111" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="hueGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="hsl(0,100%,50%)"/>
+      <stop offset="16.7%" stop-color="hsl(60,100%,50%)"/>
+      <stop offset="33.3%" stop-color="hsl(120,100%,50%)"/>
+      <stop offset="50%" stop-color="hsl(180,100%,50%)"/>
+      <stop offset="66.7%" stop-color="hsl(240,100%,50%)"/>
+      <stop offset="83.3%" stop-color="hsl(300,100%,50%)"/>
+      <stop offset="100%" stop-color="hsl(360,100%,50%)"/>
+    </linearGradient>
+    <radialGradient id="satGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="white" stop-opacity="1"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      .label { font-size: 15px; font-weight: bold; fill: #333; }
+      .desc { font-size: 12px; fill: #666; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="300" y="35" text-anchor="middle" font-size="18" font-weight="bold" fill="#222">HSB barevny model (valec)</text>
+
+  <!-- Cylinder body (visible side) -->
+  <rect x="170" y="130" width="260" height="300" fill="url(#cylBody)" rx="0"/>
+
+  <!-- Hue strip on the cylinder body surface -->
+  <rect x="170" y="130" width="260" height="300" fill="url(#hueGrad)" opacity="0.5"/>
+
+  <!-- Brightness gradient overlay on cylinder body -->
+  <rect x="170" y="130" width="260" height="300" fill="url(#cylBody)" opacity="0.55"/>
+
+  <!-- Bottom ellipse (dark) -->
+  <ellipse cx="300" cy="430" rx="130" ry="40" fill="#111" stroke="#333" stroke-width="1.5"/>
+
+  <!-- Top ellipse (hue wheel) -->
+  <!-- Base: rainbow gradient using sectors -->
+  <ellipse cx="300" cy="130" rx="130" ry="40" fill="#ccc" stroke="#999" stroke-width="1"/>
+
+  <!-- Hue sectors on top ellipse - simplified color ring -->
+  <!-- Red -->
+  <path d="M300,130 L430,130 A130,40 0 0,0 365,95 Z" fill="hsl(0,100%,50%)" opacity="0.8"/>
+  <!-- Yellow -->
+  <path d="M300,130 L365,95 A130,40 0 0,0 300,90 Z" fill="hsl(60,100%,50%)" opacity="0.8"/>
+  <!-- Green -->
+  <path d="M300,130 L300,90 A130,40 0 0,0 235,95 Z" fill="hsl(120,100%,50%)" opacity="0.8"/>
+  <!-- Cyan -->
+  <path d="M300,130 L235,95 A130,40 0 0,0 170,130 Z" fill="hsl(180,100%,50%)" opacity="0.8"/>
+  <!-- Blue -->
+  <path d="M300,130 L170,130 A130,40 0 0,1 235,165 Z" fill="hsl(240,100%,50%)" opacity="0.8"/>
+  <!-- Magenta -->
+  <path d="M300,130 L235,165 A130,40 0 0,1 300,170 Z" fill="hsl(300,100%,50%)" opacity="0.8"/>
+  <!-- Back to Red -->
+  <path d="M300,130 L300,170 A130,40 0 0,1 365,165 Z" fill="hsl(340,100%,50%)" opacity="0.8"/>
+  <path d="M300,130 L365,165 A130,40 0 0,1 430,130 Z" fill="hsl(360,100%,50%)" opacity="0.8"/>
+
+  <!-- White center (saturation: center = gray/white) -->
+  <ellipse cx="300" cy="130" rx="45" ry="14" fill="white" opacity="0.7"/>
+
+  <!-- Top ellipse border -->
+  <ellipse cx="300" cy="130" rx="130" ry="40" fill="none" stroke="#666" stroke-width="1.5"/>
+
+  <!-- H axis (Hue) - circular arrow around top -->
+  <path d="M440,130 A145,45 0 0,1 300,85" fill="none" stroke="#e53935" stroke-width="2.5" marker-end="url(#arrowRed)"/>
+  <defs>
+    <marker id="arrowRed" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#e53935"/>
+    </marker>
+  </defs>
+  <text x="462" y="112" class="label" fill="#e53935">H</text>
+  <text x="445" y="80" class="desc" fill="#e53935">Odstin (Hue)</text>
+  <text x="445" y="95" class="desc" fill="#e53935">0-360 stupnu</text>
+
+  <!-- S axis (Saturation) - horizontal arrow from center to edge -->
+  <line x1="300" y1="130" x2="420" y2="130" stroke="#1e88e5" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+  <defs>
+    <marker id="arrowBlue" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e88e5"/>
+    </marker>
+  </defs>
+  <text x="360" y="122" class="label" fill="#1e88e5">S</text>
+  <text x="345" y="155" class="desc" fill="#1e88e5">Sytost (Saturation)</text>
+  <text x="345" y="170" class="desc" fill="#1e88e5">stred = seda, okraj = syty</text>
+
+  <!-- B axis (Brightness) - vertical arrow on the side -->
+  <line x1="145" y1="430" x2="145" y2="130" stroke="#43a047" stroke-width="2.5" marker-end="url(#arrowGreen)"/>
+  <defs>
+    <marker id="arrowGreen" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#43a047"/>
+    </marker>
+  </defs>
+  <text x="130" y="280" class="label" fill="#43a047" transform="rotate(-90, 130, 280)">B (Jas / Brightness)</text>
+
+  <!-- Labels for top/bottom -->
+  <text x="115" y="125" class="desc" fill="#43a047">svetly</text>
+  <text x="115" y="445" class="desc" fill="#43a047">tmavy</text>
+
+  <!-- Side edge lines of cylinder -->
+  <line x1="170" y1="130" x2="170" y2="430" stroke="#666" stroke-width="1.5"/>
+  <line x1="430" y1="130" x2="430" y2="430" stroke="#666" stroke-width="1.5"/>
+
+  <!-- Bottom annotation -->
+  <text x="300" y="510" text-anchor="middle" font-size="13" fill="#555">H = uhel na kruhu | S = vzdalenost od stredu | B = vyska na valci</text>
+</svg>

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" width="800" height="250" font-family="Arial, Helvetica, sans-serif" font-size="14">
+  <defs>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0,0 L 10,5 L 0,10 z" fill="#e74c3c"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0,0 L 10,5 L 0,10 z" fill="#3498db"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0,0 L 10,5 L 0,10 z" fill="#27ae60"/>
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0,0 L 10,5 L 0,10 z" fill="#e67e22"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="250" fill="#fafafa" rx="8"/>
+
+  <!-- === LEFT: C0 — sharp corner === -->
+  <rect x="10" y="10" width="245" height="230" fill="none" stroke="#ddd" rx="6"/>
+  <text x="132" y="35" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">C⁰ — pozice</text>
+
+  <!-- First curve segment coming in from left -->
+  <path d="M 30,170 C 60,170 90,100 132,100" fill="none" stroke="#3498db" stroke-width="2.5"/>
+  <!-- Second curve segment going out right at different angle -->
+  <path d="M 132,100 C 170,100 200,160 230,180" fill="none" stroke="#e74c3c" stroke-width="2.5"/>
+
+  <!-- Junction point -->
+  <circle cx="132" cy="100" r="5" fill="#333"/>
+
+  <!-- Tangent arrows showing different directions -->
+  <line x1="132" y1="100" x2="105" y2="115" stroke="#3498db" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <line x1="132" y1="100" x2="158" y2="108" stroke="#e74c3c" stroke-width="2" marker-end="url(#arrowRed)"/>
+
+  <!-- Sharp corner indicator -->
+  <path d="M 115,110 A 15,15 0 0,1 148,105" fill="none" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <text x="132" y="210" text-anchor="middle" fill="#666" font-size="12">Křivky se dotýkají,</text>
+  <text x="132" y="225" text-anchor="middle" fill="#666" font-size="12">ale různý směr tečny</text>
+
+  <!-- === MIDDLE: G1 — same tangent direction, different length === -->
+  <rect x="270" y="10" width="245" height="230" fill="none" stroke="#ddd" rx="6"/>
+  <text x="392" y="35" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">G¹ — směr tečny</text>
+
+  <!-- Smooth join, same direction -->
+  <path d="M 290,170 C 320,170 355,80 392,100" fill="none" stroke="#3498db" stroke-width="2.5"/>
+  <path d="M 392,100 C 420,115 450,160 490,170" fill="none" stroke="#e74c3c" stroke-width="2.5"/>
+
+  <!-- Junction point -->
+  <circle cx="392" cy="100" r="5" fill="#333"/>
+
+  <!-- Tangent arrows: same direction but DIFFERENT lengths -->
+  <line x1="392" y1="100" x2="355" y2="85" stroke="#3498db" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <line x1="392" y1="100" x2="412" y2="107" stroke="#e74c3c" stroke-width="2" marker-end="url(#arrowRed)"/>
+
+  <!-- Length labels -->
+  <text x="358" y="78" fill="#3498db" font-size="11" font-weight="bold">dlouhý</text>
+  <text x="410" y="118" fill="#e74c3c" font-size="11" font-weight="bold">krátký</text>
+
+  <text x="392" y="210" text-anchor="middle" fill="#666" font-size="12">Stejný směr tečny,</text>
+  <text x="392" y="225" text-anchor="middle" fill="#666" font-size="12">ale různá délka vektoru</text>
+
+  <!-- === RIGHT: C1 — same tangent vector (direction + length) === -->
+  <rect x="530" y="10" width="260" height="230" fill="none" stroke="#ddd" rx="6"/>
+  <text x="660" y="35" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">C¹ — shodný tečný vektor</text>
+
+  <!-- Smooth join, same direction and magnitude -->
+  <path d="M 555,170 C 585,170 620,80 660,100" fill="none" stroke="#3498db" stroke-width="2.5"/>
+  <path d="M 660,100 C 700,120 730,170 760,170" fill="none" stroke="#e74c3c" stroke-width="2.5"/>
+
+  <!-- Junction point -->
+  <circle cx="660" cy="100" r="5" fill="#333"/>
+
+  <!-- Tangent arrows: same direction AND same length -->
+  <line x1="660" y1="100" x2="628" y2="86" stroke="#3498db" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <line x1="660" y1="100" x2="692" y2="114" stroke="#e74c3c" stroke-width="2" marker-end="url(#arrowRed)"/>
+
+  <!-- Equal sign -->
+  <text x="660" y="78" text-anchor="middle" fill="#27ae60" font-size="16" font-weight="bold">=</text>
+
+  <text x="660" y="210" text-anchor="middle" fill="#666" font-size="12">Shodný směr i délka</text>
+  <text x="660" y="225" text-anchor="middle" fill="#666" font-size="12">tečného vektoru</text>
+</svg>

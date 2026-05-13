@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 350" width="700" height="350" font-family="sans-serif" font-size="14">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#999"/>
+    </marker>
+    <marker id="arr-blue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#1976d2"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="350" y="22" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">Pořadí transformací záleží!</text>
+
+  <!-- Divider -->
+  <line x1="350" y1="30" x2="350" y2="340" stroke="#ccc" stroke-width="1"/>
+
+  <!-- LEFT PANEL: Rotate then Translate -->
+  <g transform="translate(20, 35)">
+    <text x="155" y="15" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565c0">Rotace 90° → Posunutí (5, 0)</text>
+
+    <!-- Axes -->
+    <line x1="30" y1="270" x2="300" y2="270" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
+    <line x1="30" y1="270" x2="30" y2="30" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
+    <text x="305" y="275" font-size="11" fill="#999">x</text>
+    <text x="22" y="28" font-size="11" fill="#999">y</text>
+
+    <!-- Scale: 30px = 1 unit, origin at (30, 270) -->
+    <!-- Tick marks -->
+    <line x1="60" y1="267" x2="60" y2="273" stroke="#999" stroke-width="0.5"/>
+    <line x1="90" y1="267" x2="90" y2="273" stroke="#999" stroke-width="0.5"/>
+    <line x1="120" y1="267" x2="120" y2="273" stroke="#999" stroke-width="0.5"/>
+    <line x1="150" y1="267" x2="150" y2="273" stroke="#999" stroke-width="0.5"/>
+    <line x1="180" y1="267" x2="180" y2="273" stroke="#999" stroke-width="0.5"/>
+    <line x1="210" y1="267" x2="210" y2="273" stroke="#999" stroke-width="0.5"/>
+    <line x1="240" y1="267" x2="240" y2="273" stroke="#999" stroke-width="0.5"/>
+    <text x="60" y="286" text-anchor="middle" font-size="10" fill="#999">1</text>
+    <text x="180" y="286" text-anchor="middle" font-size="10" fill="#999">5</text>
+
+    <!-- Original L-shape at (1,0): light gray -->
+    <!-- L-shape: base 2×1, stem 1×2 total height -->
+    <polygon points="60,270 120,270 120,240 90,240 90,210 60,210" fill="#e0e0e0" fill-opacity="0.7" stroke="#999" stroke-width="1"/>
+    <text x="90" y="260" text-anchor="middle" font-size="10" fill="#888">P₀</text>
+
+    <!-- After rotation 90° around origin: (1,0)→(0,1) shape rotated -->
+    <!-- Rotated L-shape: points transform (x,y)→(-y,x) relative to origin -->
+    <!-- Original corners relative to origin: (1,0),(2,0),(2,1),(1.5,1),(1.5,2),(1,2) -->
+    <!-- After 90° CCW: (0,1),(0,2),(-1,2),(-1,1.5),(-2,1.5),(-2,1) -->
+    <!-- Shifted to positive: mapped at origin -->
+    <polygon points="30,240 30,210 0,210 0,225 -30,225 -30,240" fill="#90caf9" fill-opacity="0.5" stroke="#42a5f5" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="5" y="232" text-anchor="middle" font-size="10" fill="#42a5f5">R(P₀)</text>
+
+    <!-- After translate (5,0): shift right by 150px -->
+    <polygon points="180,240 180,210 150,210 150,225 120,225 120,240" fill="#1565c0" fill-opacity="0.7" stroke="#0d47a1" stroke-width="1.5"/>
+    <text x="155" y="232" text-anchor="middle" font-size="10" fill="#0d47a1" font-weight="bold">T(R(P₀))</text>
+
+    <!-- Result label -->
+    <text x="155" y="300" text-anchor="middle" font-size="12" fill="#0d47a1" font-weight="bold">Výsledek: kolem (5, 1)</text>
+
+    <!-- Arrow showing rotation -->
+    <path d="M55,200 Q20,190 25,220" fill="none" stroke="#42a5f5" stroke-width="1.5" marker-end="url(#arr-blue)"/>
+    <text x="15" y="195" font-size="10" fill="#42a5f5">R 90°</text>
+
+    <!-- Arrow showing translation -->
+    <line x1="45" y1="215" x2="115" y2="215" stroke="#1976d2" stroke-width="1.5" marker-end="url(#arr-blue)"/>
+    <text x="80" y="210" text-anchor="middle" font-size="10" fill="#1976d2">T(5,0)</text>
+  </g>
+
+  <!-- RIGHT PANEL: Translate then Rotate -->
+  <g transform="translate(370, 35)">
+    <text x="155" y="15" text-anchor="middle" font-size="14" font-weight="bold" fill="#e53935">Posunutí (5, 0) → Rotace 90°</text>
+
+    <!-- Axes -->
+    <line x1="30" y1="270" x2="300" y2="270" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
+    <line x1="30" y1="270" x2="30" y2="30" stroke="#999" stroke-width="1" marker-end="url(#arr)"/>
+    <text x="305" y="275" font-size="11" fill="#999">x</text>
+    <text x="22" y="28" font-size="11" fill="#999">y</text>
+
+    <!-- Tick marks -->
+    <line x1="60" y1="267" x2="60" y2="273" stroke="#999" stroke-width="0.5"/>
+    <line x1="90" y1="267" x2="90" y2="273" stroke="#999" stroke-width="0.5"/>
+    <line x1="120" y1="267" x2="120" y2="273" stroke="#999" stroke-width="0.5"/>
+    <line x1="150" y1="267" x2="150" y2="273" stroke="#999" stroke-width="0.5"/>
+    <line x1="180" y1="267" x2="180" y2="273" stroke="#999" stroke-width="0.5"/>
+    <line x1="210" y1="267" x2="210" y2="273" stroke="#999" stroke-width="0.5"/>
+    <line x1="240" y1="267" x2="240" y2="273" stroke="#999" stroke-width="0.5"/>
+    <text x="60" y="286" text-anchor="middle" font-size="10" fill="#999">1</text>
+    <text x="180" y="286" text-anchor="middle" font-size="10" fill="#999">5</text>
+
+    <!-- Original L-shape at (1,0): light gray -->
+    <polygon points="60,270 120,270 120,240 90,240 90,210 60,210" fill="#e0e0e0" fill-opacity="0.7" stroke="#999" stroke-width="1"/>
+    <text x="90" y="260" text-anchor="middle" font-size="10" fill="#888">P₀</text>
+
+    <!-- After translate (5,0): shifted right -->
+    <polygon points="210,270 270,270 270,240 240,240 240,210 210,210" fill="#ffcdd2" fill-opacity="0.5" stroke="#ef9a9a" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="245" y="260" text-anchor="middle" font-size="10" fill="#e57373">T(P₀)</text>
+
+    <!-- After rotation 90° around origin: (6,0)→(0,6), (7,0)→(0,7), etc. -->
+    <!-- The translated shape corners: (6,0),(8,0),(8,1),(7,1),(7,2),(6,2) -->
+    <!-- After 90° CCW: (0,6),(0,8),(-1,8),(-1,7),(-2,7),(-2,6) -->
+    <!-- Mapped: origin (30,270), so (0,6)→(30,90), etc -->
+    <polygon points="30,90 30,30 0,30 0,60 -30,60 -30,90" fill="#c62828" fill-opacity="0.7" stroke="#b71c1c" stroke-width="1.5"/>
+    <text x="-10" y="55" text-anchor="middle" font-size="10" fill="#b71c1c" font-weight="bold">R(T(P₀))</text>
+
+    <!-- Result label -->
+    <text x="155" y="300" text-anchor="middle" font-size="12" fill="#c62828" font-weight="bold">Výsledek: kolem (0, 6)</text>
+
+    <!-- Arrow showing translation -->
+    <line x1="125" y1="235" x2="205" y2="235" stroke="#e57373" stroke-width="1.5" marker-end="url(#arr)"/>
+    <text x="165" y="230" text-anchor="middle" font-size="10" fill="#e57373">T(5,0)</text>
+
+    <!-- Arrow showing rotation -->
+    <path d="M200,215 Q130,100 40,95" fill="none" stroke="#c62828" stroke-width="1.5" marker-end="url(#arr)"/>
+    <text x="140" y="135" font-size="10" fill="#c62828">R 90°</text>
+  </g>
+
+  <!-- Bottom comparison -->
+  <text x="350" y="340" text-anchor="middle" font-size="13" fill="#333" font-weight="bold">T · R · P ≠ R · T · P — maticové násobení obecně nekomutuje!</text>
+</svg>

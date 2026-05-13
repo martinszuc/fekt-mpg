@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 280" width="700" height="280" font-family="Arial, Helvetica, sans-serif" font-size="14">
+  <rect width="700" height="280" fill="#fafafa" rx="8"/>
+
+  <!-- Title -->
+  <text x="350" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">IEEE 754 — Single Precision (float32)</text>
+
+  <!-- === Bit layout bar === -->
+  <!-- Sign bit (1 bit) -->
+  <rect x="50" y="45" width="40" height="45" fill="#e74c3c" rx="4" opacity="0.85"/>
+  <text x="70" y="73" text-anchor="middle" fill="white" font-size="16" font-weight="bold">S</text>
+  <text x="70" y="105" text-anchor="middle" fill="#e74c3c" font-size="12" font-weight="bold">1 bit</text>
+
+  <!-- Exponent (8 bits) -->
+  <rect x="92" y="45" width="200" height="45" fill="#3498db" rx="4" opacity="0.85"/>
+  <text x="192" y="73" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Exponent (E)</text>
+  <text x="192" y="105" text-anchor="middle" fill="#3498db" font-size="12" font-weight="bold">8 bitů</text>
+
+  <!-- Mantissa (23 bits) -->
+  <rect x="294" y="45" width="356" height="45" fill="#27ae60" rx="4" opacity="0.85"/>
+  <text x="472" y="73" text-anchor="middle" fill="white" font-size="16" font-weight="bold">Mantisa (M)</text>
+  <text x="472" y="105" text-anchor="middle" fill="#27ae60" font-size="12" font-weight="bold">23 bitů</text>
+
+  <!-- Bit markers -->
+  <text x="50" y="42" fill="#999" font-size="10">31</text>
+  <text x="92" y="42" fill="#999" font-size="10">30</text>
+  <text x="280" y="42" fill="#999" font-size="10">23</text>
+  <text x="294" y="42" fill="#999" font-size="10">22</text>
+  <text x="640" y="42" fill="#999" font-size="10">0</text>
+
+  <!-- === Formula === -->
+  <text x="350" y="140" text-anchor="middle" font-size="16" fill="#333">
+    Hodnota = (-1)<tspan baseline-shift="super" font-size="12">S</tspan> × 1.M × 2<tspan baseline-shift="super" font-size="12">(E - 127)</tspan>
+  </text>
+
+  <!-- === Worked example: 6.75 === -->
+  <line x1="50" y1="155" x2="650" y2="155" stroke="#ddd" stroke-width="1"/>
+  <text x="350" y="175" text-anchor="middle" font-size="15" font-weight="bold" fill="#555">Příklad: kódování čísla 6,75</text>
+
+  <!-- Step 1 -->
+  <text x="60" y="200" fill="#333" font-size="13">
+    <tspan font-weight="bold" fill="#555">1.</tspan> Binárně: 6,75 = 110,11₂
+  </text>
+
+  <!-- Step 2 -->
+  <text x="60" y="220" fill="#333" font-size="13">
+    <tspan font-weight="bold" fill="#555">2.</tspan> Normalizace: 1,1011 × 2²
+  </text>
+
+  <!-- Step 3 -->
+  <text x="60" y="240" fill="#333" font-size="13">
+    <tspan font-weight="bold" fill="#555">3.</tspan>
+    <tspan fill="#e74c3c" font-weight="bold">S = 0</tspan>,
+    <tspan fill="#3498db" font-weight="bold">E = 2+127 = 129 = 10000001₂</tspan>,
+    <tspan fill="#27ae60" font-weight="bold">M = 10110000...0</tspan>
+  </text>
+
+  <!-- Final binary -->
+  <text x="60" y="265" fill="#333" font-size="13">
+    <tspan font-weight="bold" fill="#555">Výsledek:</tspan>
+    <tspan fill="#e74c3c" font-weight="bold" font-family="monospace"> 0 </tspan>
+    <tspan fill="#3498db" font-weight="bold" font-family="monospace">10000001 </tspan>
+    <tspan fill="#27ae60" font-weight="bold" font-family="monospace">10110000000000000000000</tspan>
+  </text>
+</svg>

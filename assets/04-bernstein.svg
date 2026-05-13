@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" font-family="Arial, Helvetica, sans-serif" font-size="14">
+  <rect width="600" height="400" fill="#fafafa" rx="8"/>
+
+  <!-- Title -->
+  <text x="300" y="24" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">Bernsteinovy polynomy 3. stupně</text>
+
+  <!-- Axes -->
+  <line x1="70" y1="350" x2="550" y2="350" stroke="#333" stroke-width="1.5"/>
+  <line x1="70" y1="350" x2="70" y2="50" stroke="#333" stroke-width="1.5"/>
+
+  <!-- X axis labels -->
+  <text x="70" y="370" text-anchor="middle" fill="#333" font-size="12">0</text>
+  <text x="190" y="370" text-anchor="middle" fill="#333" font-size="12">0,25</text>
+  <text x="310" y="370" text-anchor="middle" fill="#333" font-size="12">0,5</text>
+  <text x="430" y="370" text-anchor="middle" fill="#333" font-size="12">0,75</text>
+  <text x="550" y="370" text-anchor="middle" fill="#333" font-size="12">1</text>
+  <text x="310" y="392" text-anchor="middle" fill="#333" font-size="14">t</text>
+
+  <!-- Y axis labels -->
+  <text x="60" y="354" text-anchor="end" fill="#333" font-size="12">0</text>
+  <text x="60" y="204" text-anchor="end" fill="#333" font-size="12">0,5</text>
+  <text x="60" y="54" text-anchor="end" fill="#333" font-size="12">1</text>
+
+  <!-- Grid lines -->
+  <line x1="70" y1="200" x2="550" y2="200" stroke="#eee" stroke-width="1"/>
+  <line x1="70" y1="50" x2="550" y2="50" stroke="#eee" stroke-width="1"/>
+  <line x1="190" y1="50" x2="190" y2="350" stroke="#eee" stroke-width="1"/>
+  <line x1="310" y1="50" x2="310" y2="350" stroke="#eee" stroke-width="1"/>
+  <line x1="430" y1="50" x2="430" y2="350" stroke="#eee" stroke-width="1"/>
+
+  <!-- Sum = 1 dashed line -->
+  <line x1="70" y1="50" x2="550" y2="50" stroke="#999" stroke-width="1" stroke-dasharray="6,4"/>
+  <text x="560" y="55" fill="#999" font-size="11">Σ = 1</text>
+
+  <!-- B0,3 = (1-t)^3 — RED
+       t=0: 1, t=0.25: 0.4219, t=0.5: 0.125, t=0.75: 0.0156, t=1: 0
+       y = 350 - val*300 -->
+  <path d="M 70,50 C 70,50 130,117 190,223.4 C 250,295 310,312.5 370,336.7 C 430,344.8 490,348.6 550,350"
+        fill="none" stroke="#e74c3c" stroke-width="2.5"/>
+  <!-- More accurate B0: polyline approach -->
+  <!-- t: 0    .05   .1    .15   .2    .25   .3    .35   .4    .45   .5    .55   .6    .65   .7    .75   .8    .85   .9    .95   1 -->
+  <!-- v: 1    .857  .729  .614  .512  .422  .343  .275  .216  .166  .125  .091  .064  .043  .027  .016  .008  .003  .001  0     0 -->
+  <polyline points="70,50 94,92.9 118,131.3 142,165.8 166,196.4 190,223.4 214,247.1 238,267.5 262,285.2 286,300.2 310,312.5 334,322.7 358,330.8 382,337.1 406,341.9 430,345.3 454,347.6 478,349 502,349.7 526,349.9 550,350"
+          fill="none" stroke="#e74c3c" stroke-width="2.5"/>
+
+  <!-- B1,3 = 3t(1-t)^2 — BLUE
+       t=0: 0, t=0.25: 0.4219, t=0.5: 0.375, t=0.75: 0.1406, t=1: 0 -->
+  <!-- v: 0    .135  .243  .325  .384  .422  .441  .444  .432  .408  .375  .334  .288  .239  .189  .141  .096  .057  .027  .007  0 -->
+  <polyline points="70,350 94,309.5 118,277.1 142,252.5 166,234.8 190,223.4 214,217.7 238,216.8 262,220.4 286,227.6 310,237.5 334,249.8 358,263.6 382,278.3 406,293.3 430,307.7 454,321.2 478,332.9 502,341.9 526,347.9 550,350"
+          fill="none" stroke="#3498db" stroke-width="2.5"/>
+
+  <!-- B2,3 = 3t^2(1-t) — GREEN
+       v: 0    .007  .027  .057  .096  .141  .189  .239  .288  .334  .375  .408  .432  .444  .441  .422  .384  .325  .243  .135  0 -->
+  <polyline points="70,350 94,347.9 118,341.9 142,332.9 166,321.2 190,307.7 214,293.3 238,278.3 262,263.6 286,249.8 310,237.5 334,227.6 358,220.4 382,216.8 406,217.7 430,223.4 454,234.8 478,252.5 502,277.1 526,309.5 550,350"
+          fill="none" stroke="#27ae60" stroke-width="2.5"/>
+
+  <!-- B3,3 = t^3 — PURPLE
+       v: 0    0     .001  .003  .008  .016  .027  .043  .064  .091  .125  .166  .216  .275  .343  .422  .512  .614  .729  .857  1 -->
+  <polyline points="70,350 94,349.9 118,349.7 142,349 166,347.6 190,345.3 214,341.9 238,337.1 262,330.8 286,322.7 310,312.5 334,300.2 358,285.2 382,267.5 406,247.1 430,223.4 454,196.4 478,165.8 502,131.3 526,92.9 550,50"
+          fill="none" stroke="#8e44ad" stroke-width="2.5"/>
+
+  <!-- Labels for each curve -->
+  <text x="82" y="44" fill="#e74c3c" font-size="13" font-weight="bold">B₀,₃ = (1-t)³</text>
+  <text x="130" y="208" fill="#3498db" font-size="13" font-weight="bold">B₁,₃ = 3t(1-t)²</text>
+  <text x="370" y="208" fill="#27ae60" font-size="13" font-weight="bold">B₂,₃ = 3t²(1-t)</text>
+  <text x="460" y="44" fill="#8e44ad" font-size="13" font-weight="bold">B₃,₃ = t³</text>
+</svg>

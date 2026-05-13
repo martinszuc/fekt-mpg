@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 520" width="600" height="520" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .label { font-size: 15px; font-weight: bold; fill: #333; text-anchor: middle; }
+      .sublabel { font-size: 13px; fill: #555; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- Black background to show additive mixing -->
+  <rect x="0" y="0" width="600" height="520" rx="12" fill="#111"/>
+
+  <!-- Title -->
+  <text x="300" y="35" text-anchor="middle" font-size="18" font-weight="bold" fill="#eee">Aditivni michani barev (RGB)</text>
+
+  <!-- Red circle (top-left) -->
+  <circle cx="240" cy="220" r="130" fill="red" opacity="0.7"/>
+
+  <!-- Green circle (top-right) -->
+  <circle cx="360" cy="220" r="130" fill="lime" opacity="0.7"/>
+
+  <!-- Blue circle (bottom-center) -->
+  <circle cx="300" cy="330" r="130" fill="blue" opacity="0.7"/>
+
+  <!-- Labels for pure colors -->
+  <text x="175" y="165" class="label" fill="#ff6666">Cervena (R)</text>
+  <text x="425" y="165" class="label" fill="#66ff66">Zelena (G)</text>
+  <text x="300" y="445" class="label" fill="#6688ff">Modra (B)</text>
+
+  <!-- Labels for overlaps -->
+  <text x="300" y="185" class="sublabel" fill="#ffff44">Zluta (R+G)</text>
+  <text x="225" y="310" class="sublabel" fill="#ff44ff">Magenta (R+B)</text>
+  <text x="378" y="310" class="sublabel" fill="#44ffff">Cyan (G+B)</text>
+
+  <!-- Center label -->
+  <text x="300" y="270" class="label" fill="#ffffff" font-size="14">Bila</text>
+  <text x="300" y="287" class="sublabel" fill="#cccccc">(R+G+B)</text>
+
+  <!-- Bottom note -->
+  <text x="300" y="495" text-anchor="middle" font-size="12" fill="#999">Pouziti: monitory, projektory, jevistni reflektory</text>
+</svg>

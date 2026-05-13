@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 520" width="600" height="520" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .label { font-size: 15px; font-weight: bold; fill: #333; text-anchor: middle; }
+      .sublabel { font-size: 13px; fill: #444; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- White background to show subtractive mixing -->
+  <rect x="0" y="0" width="600" height="520" rx="12" fill="#fff" stroke="#ddd" stroke-width="1"/>
+
+  <!-- Title -->
+  <text x="300" y="35" text-anchor="middle" font-size="18" font-weight="bold" fill="#222">Subtraktivni michani barev (CMY)</text>
+
+  <!-- Cyan circle (top-left) -->
+  <circle cx="240" cy="220" r="130" fill="cyan" opacity="0.6"/>
+
+  <!-- Magenta circle (top-right) -->
+  <circle cx="360" cy="220" r="130" fill="magenta" opacity="0.6"/>
+
+  <!-- Yellow circle (bottom-center) -->
+  <circle cx="300" cy="330" r="130" fill="yellow" opacity="0.6"/>
+
+  <!-- Labels for pure colors -->
+  <text x="170" y="155" class="label" fill="#008B8B">Cyan (C)</text>
+  <text x="430" y="155" class="label" fill="#8B008B">Magenta (M)</text>
+  <text x="300" y="448" class="label" fill="#8B8B00">Zluta (Y)</text>
+
+  <!-- Labels for overlaps -->
+  <text x="300" y="178" class="sublabel" fill="#0000AA">Modra (C+M)</text>
+  <text x="218" y="318" class="sublabel" fill="#006600">Zelena (C+Y)</text>
+  <text x="385" y="318" class="sublabel" fill="#AA0000">Cervena (M+Y)</text>
+
+  <!-- Center label -->
+  <text x="300" y="268" class="label" fill="#111" font-size="14">Cerna</text>
+  <text x="300" y="285" class="sublabel" fill="#444">(C+M+Y)</text>
+
+  <!-- Bottom note -->
+  <text x="300" y="495" text-anchor="middle" font-size="12" fill="#888">Pouziti: inkoustove tiskarny, malovani, pigmenty</text>
+</svg>

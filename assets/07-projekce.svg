@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 350" width="750" height="350" font-family="sans-serif" font-size="14">
+  <!-- Background -->
+  <rect width="750" height="350" fill="#fafafa" rx="8"/>
+
+  <!-- Titles -->
+  <text x="185" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#333">Kolma projekce</text>
+  <text x="565" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#333">Perspektivni projekce</text>
+
+  <!-- Divider -->
+  <line x1="375" y1="15" x2="375" y2="340" stroke="#ccc" stroke-width="1" stroke-dasharray="5,5"/>
+
+  <!-- === LEFT: Orthographic === -->
+
+  <!-- Projection plane -->
+  <rect x="120" y="50" width="8" height="250" fill="#4a90d9" opacity="0.3" rx="2"/>
+  <line x1="124" y1="50" x2="124" y2="300" stroke="#4a90d9" stroke-width="2"/>
+  <text x="124" y="320" text-anchor="middle" font-size="12" fill="#4a90d9">Prumenta</text>
+
+  <!-- Objects at different distances -->
+  <!-- Near object (square) -->
+  <rect x="220" y="80" width="40" height="40" fill="#e74c3c" opacity="0.7" rx="3"/>
+  <text x="240" y="135" text-anchor="middle" font-size="11" fill="#666">Blizko</text>
+
+  <!-- Far object (square, same size in ortho) -->
+  <rect x="310" y="160" width="40" height="40" fill="#27ae60" opacity="0.7" rx="3"/>
+  <text x="330" y="215" text-anchor="middle" font-size="11" fill="#666">Daleko</text>
+
+  <!-- Parallel rays (horizontal) -->
+  <defs>
+    <marker id="arrowL" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M8,3 L0,0 L0,6 Z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- Ray from near object -->
+  <line x1="220" y1="95" x2="132" y2="95" stroke="#555" stroke-width="1.5" marker-end="url(#arrowL)"/>
+  <line x1="220" y1="105" x2="132" y2="105" stroke="#555" stroke-width="1.5" marker-end="url(#arrowL)"/>
+
+  <!-- Ray from far object -->
+  <line x1="310" y1="175" x2="132" y2="175" stroke="#555" stroke-width="1.5" marker-end="url(#arrowL)"/>
+  <line x1="310" y1="185" x2="132" y2="185" stroke="#555" stroke-width="1.5" marker-end="url(#arrowL)"/>
+
+  <!-- Projected sizes (same!) -->
+  <line x1="115" y1="95" x2="115" y2="105" stroke="#e74c3c" stroke-width="3"/>
+  <line x1="115" y1="175" x2="115" y2="185" stroke="#27ae60" stroke-width="3"/>
+
+  <!-- Annotation -->
+  <text x="60" y="100" text-anchor="middle" font-size="11" fill="#e74c3c">10px</text>
+  <text x="60" y="180" text-anchor="middle" font-size="11" fill="#27ae60">10px</text>
+  <text x="185" y="280" text-anchor="middle" font-size="12" fill="#888" font-style="italic">Stejna velikost</text>
+  <text x="185" y="295" text-anchor="middle" font-size="12" fill="#888" font-style="italic">bez ohledu na vzdalenost</text>
+
+  <!-- === RIGHT: Perspective === -->
+
+  <!-- Camera/eye -->
+  <circle cx="440" cy="175" r="8" fill="#333"/>
+  <text x="440" y="200" text-anchor="middle" font-size="12" fill="#333">Kamera</text>
+
+  <!-- Projection plane -->
+  <rect x="496" y="60" width="8" height="230" fill="#4a90d9" opacity="0.3" rx="2"/>
+  <line x1="500" y1="60" x2="500" y2="290" stroke="#4a90d9" stroke-width="2"/>
+  <text x="500" y="310" text-anchor="middle" font-size="12" fill="#4a90d9">Prumenta</text>
+
+  <!-- Near object -->
+  <rect x="570" y="100" width="40" height="40" fill="#e74c3c" opacity="0.7" rx="3"/>
+  <text x="590" y="155" text-anchor="middle" font-size="11" fill="#666">Blizko</text>
+
+  <!-- Far object -->
+  <rect x="670" y="150" width="40" height="40" fill="#27ae60" opacity="0.7" rx="3"/>
+  <text x="690" y="205" text-anchor="middle" font-size="11" fill="#666">Daleko</text>
+
+  <!-- Converging rays from near object -->
+  <line x1="570" y1="110" x2="448" y2="170" stroke="#555" stroke-width="1.5"/>
+  <line x1="570" y1="130" x2="448" y2="180" stroke="#555" stroke-width="1.5"/>
+
+  <!-- Converging rays from far object -->
+  <line x1="670" y1="160" x2="448" y2="172" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="670" y1="180" x2="448" y2="178" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Projected sizes on plane -->
+  <!-- Near: larger projection -->
+  <line x1="492" y1="138" x2="492" y2="156" stroke="#e74c3c" stroke-width="3"/>
+  <!-- Far: smaller projection -->
+  <line x1="492" y1="168" x2="492" y2="176" stroke="#27ae60" stroke-width="3"/>
+
+  <text x="478" y="150" text-anchor="end" font-size="11" fill="#e74c3c">Vetsi</text>
+  <text x="478" y="175" text-anchor="end" font-size="11" fill="#27ae60">Mensi</text>
+
+  <text x="565" y="270" text-anchor="middle" font-size="12" fill="#888" font-style="italic">Vzdalenejsi = mensi</text>
+  <text x="565" y="285" text-anchor="middle" font-size="12" fill="#888" font-style="italic">(jako v realite)</text>
+</svg>
